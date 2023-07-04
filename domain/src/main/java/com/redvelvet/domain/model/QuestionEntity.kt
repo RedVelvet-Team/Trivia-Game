@@ -7,7 +7,7 @@ data class QuestionEntity(
     val id: String,
     val incorrectAnswers: List<String>,
     val isNiche: Boolean,
-    val question: QuestionTextDto,
+    val question: QuestionTextEntity,
     val regions: List<String>,
     val tags: List<String>,
     val type: String
