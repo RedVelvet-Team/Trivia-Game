@@ -1,4 +1,4 @@
-package com.revelet.data.local.source
+package com.redvelvet.data.local.source
 
 interface PreferencesDataSource {
 

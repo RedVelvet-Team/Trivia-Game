@@ -1,4 +1,4 @@
-package com.revelet.data.local.preferences
+package com.redvelvet.data.local.preferences
 
 interface PreferencesDataStore {
 
