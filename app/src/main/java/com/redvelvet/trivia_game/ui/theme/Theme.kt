@@ -1,4 +1,4 @@
-package com.redvelvet.presentation.ui.theme
+package com.redvelvet.trivia_game.ui.theme
 
 import android.app.Activity
 import android.os.Build
