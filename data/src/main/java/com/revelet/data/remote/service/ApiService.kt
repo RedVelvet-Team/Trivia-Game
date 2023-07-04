@@ -9,10 +9,6 @@ import retrofit2.http.Query
 
 interface ApiService {
 
-    @GET("tags")
-    suspend fun getAllTags(): Response<QuestionTagsDto>
-
-
     @GET("question/{id}")
     suspend fun getQuestionById(
         @Query("id") id: String,
@@ -23,7 +19,7 @@ interface ApiService {
     suspend fun getRandomSetOfQuestion(
         @Query("limit") limit: Int,
         @Query("categories") categories: String,
-        @Query("tags") tags: String,
+        @Query("difficulties") difficulties: String,
         @Query("types") types: String,
     ): Response<QuestionDto>
 
