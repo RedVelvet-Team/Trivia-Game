@@ -7,13 +7,13 @@ data class QuestionImageChoice(
     @SerializedName("category")
     val category: String? = "",
     @SerializedName("correctAnswer")
-    val correctAnswer: List<CorrectAnswerDto>? = listOf(),
+    val correctAnswer: List<CorrectAnswerImageChoiceDto>? = listOf(),
     @SerializedName("difficulty")
     val difficulty: String? = "",
     @SerializedName("id")
     val id: String? = "",
     @SerializedName("incorrectAnswers")
-    val incorrectAnswers: List<List<IncorrectAnswerDto>>? = listOf(),
+    val incorrectAnswers: List<IncorrectAnswerImageChoiceDto>? = listOf(),
     @SerializedName("isNiche")
     val isNiche: Boolean? = false,
     @SerializedName("question")
