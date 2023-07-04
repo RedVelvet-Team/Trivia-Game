@@ -11,4 +11,8 @@ data class QuestionEntity(
     val regions: List<String>,
     val tags: List<String>,
     val type: String
-)
+){
+    data class QuestionTextEntity(
+        val text: String
+    )
+}
