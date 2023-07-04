@@ -1,4 +1,4 @@
-package com.redvelvet.domain.model
+package com.redvelvet.domain.entity
 
 data class QuestionImageChoiceEntity(
     val category: String,

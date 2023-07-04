@@ -1,4 +1,4 @@
-package com.redvelvet.domain.model
+package com.redvelvet.domain.entity
 
 data class CorrectAnswerEntity(
     val height: Int,
