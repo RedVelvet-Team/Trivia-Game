@@ -3,7 +3,7 @@ package com.revelet.data.remot.dto
 
 import com.google.gson.annotations.SerializedName
 
-data class IncorrectAnswerDto(
+data class IncorrectAnswerImageChoiceDto(
 
     @SerializedName("description")
     val description: String? = "",
