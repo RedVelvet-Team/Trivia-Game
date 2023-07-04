@@ -10,5 +10,18 @@ data class QuestionByCategoryDto(
     @SerializedName("history")
     val history: Int? = null,
     @SerializedName("science")
-    val science: Int? = null
+    val science: Int? = null,
+    @SerializedName("arts_and_literature")
+    val artsAndLiterature: Int? = null,
+    @SerializedName("film_and_tv")
+    val filmAndTv: Int? = null,
+    @SerializedName("general_knowledge")
+    val generalKnowledge: Int? = null,
+    @SerializedName("society_and_culture")
+    val societyAndCulture: Int? = null,
+    @SerializedName("music")
+    val music: Int? = null,
+    @SerializedName("sport_and_leisure")
+    val sportAndLeisure: Int? = null
+
 )
