@@ -1,4 +1,4 @@
-package com.revelet.data.remot.dto
+package com.redvelvet.data.remote.dto
 
 import com.google.gson.annotations.SerializedName
 

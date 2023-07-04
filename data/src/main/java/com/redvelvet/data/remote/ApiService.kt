@@ -1,7 +1,6 @@
-package com.revelet.data.remote.service
+package com.redvelvet.data.remote
 
-import com.revelet.data.remote.dto.QuestionDto
-import com.revelet.data.remote.dto.QuestionTagsDto
+import com.redvelvet.data.remote.dto.QuestionDto
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query
@@ -14,7 +13,6 @@ interface ApiService {
         @Query("id") id: String,
     ): Response<QuestionDto>
 
-
     @GET("questions")
     suspend fun getRandomSetOfQuestion(
         @Query("limit") limit: Int,
@@ -24,4 +22,3 @@ interface ApiService {
     ): Response<QuestionDto>
 
 }
-
