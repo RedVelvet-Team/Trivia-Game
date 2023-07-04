@@ -1,4 +1,4 @@
-package com.redvelvet.trivia_game.ui.theme
+package com.redvelvet.presentation.ui.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle

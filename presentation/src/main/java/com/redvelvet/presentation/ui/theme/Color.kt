@@ -1,4 +1,4 @@
-package com.redvelvet.trivia_game.ui.theme
+package com.redvelvet.presentation.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
