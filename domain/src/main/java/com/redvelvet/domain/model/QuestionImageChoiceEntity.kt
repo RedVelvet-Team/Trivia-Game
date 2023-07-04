@@ -5,7 +5,7 @@ data class QuestionImageChoiceEntity(
     val correctAnswer: List<CorrectAnswerDto>,
     val difficulty: String,
     val id: String,
-    val incorrectAnswers: List<List<IncorrectAnswerDto>>,
+    val incorrectAnswers: List<IncorrectAnswerImageChoiceDto>,
     val isNiche: Boolean,
     val question: QuestionTextDto,
     val regions: List<Any>,
