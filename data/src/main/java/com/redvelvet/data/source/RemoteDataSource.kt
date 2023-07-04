@@ -1,15 +1,12 @@
-package com.redvelvet.data.remote
+package com.redvelvet.data.source
 
 import com.redvelvet.data.remote.dto.QuestionDto
 
 interface RemoteDataSource {
-
-    suspend fun getQuestionById(id: String): QuestionDto
-
     suspend fun getRandomSetOfQuestion(
         limit: Int,
         categories: String,
         difficulties: String,
         types: String,
-    ): QuestionDto
+    ): List<QuestionDto>
 }
