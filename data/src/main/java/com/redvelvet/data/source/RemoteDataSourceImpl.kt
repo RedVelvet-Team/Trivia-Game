@@ -1,5 +1,6 @@
-package com.redvelvet.data.remote
+package com.redvelvet.data.source
 
+import com.redvelvet.data.remote.ApiService
 import com.redvelvet.data.remote.dto.QuestionDto
 import okhttp3.internal.http2.ConnectionShutdownException
 import retrofit2.Response
@@ -11,16 +12,13 @@ import javax.inject.Inject
 class RemoteDataSourceImpl @Inject constructor(
     private val apiService: ApiService
 ) : RemoteDataSource {
-    override suspend fun getQuestionById(id: String): QuestionDto {
-        return wrapResponse { apiService.getQuestionById(id) }
-    }
 
     override suspend fun getRandomSetOfQuestion(
         limit: Int,
         categories: String,
         difficulties: String,
         types: String
-    ): QuestionDto {
+    ): List<QuestionDto> {
         return wrapResponse {
             apiService.getRandomSetOfQuestion(
                 limit,
@@ -32,7 +30,6 @@ class RemoteDataSourceImpl @Inject constructor(
     }
 
     private suspend fun <T> wrapResponse(call: suspend () -> Response<T>): T {
-        // TODO: This is a temporary solution to handle network errors
         try {
             val response = call()
             if (response.isSuccessful) return response.body() ?: throw IOException()
