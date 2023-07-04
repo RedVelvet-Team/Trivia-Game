@@ -13,7 +13,7 @@ val Pink40 = Color(0xFF7D5260)
 val BackgroundLight = Color(0xFFF6F6F6)
 val BackgroundDark = Color(0xFF2E3041)
 
-val ContainerLight = Color(0xF0F1F1F1)
+val ContainerLight = Color(0x99F1F1F1)
 val ContainerDark = Color(0xFF37394B)
 
 val White = Color(0xF0F6F6F6)
