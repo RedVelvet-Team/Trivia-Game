@@ -2,7 +2,7 @@ package com.redvelvet.domain.entity
 
 data class QuestionByQueryEntity(
     val byCategory: QuestionByCategoryEntity,
-    val byDifficulty: QuestionByDifficultyEntitiy,
+    val byDifficulty: QuestionByDifficultyEntity,
     val byState: QuestionByStateEntity,
     val byType: QuestionByTypeEntity,
     val lastCreated: String,
