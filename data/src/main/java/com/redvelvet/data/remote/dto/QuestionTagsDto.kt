@@ -1,3 +1,3 @@
-package com.revelet.data.remot.dto
+package com.redvelvet.data.remote.dto
 
 class QuestionTagsDto : ArrayList<String>()
