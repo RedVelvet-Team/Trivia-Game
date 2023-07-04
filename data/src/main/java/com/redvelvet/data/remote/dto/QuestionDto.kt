@@ -23,4 +23,9 @@ data class QuestionDto(
     val tags: List<String>? = listOf(),
     @SerializedName("type")
     val type: String? = ""
-)
+){
+    data class QuestionTextDto(
+        @SerializedName("text")
+        val text: String? = null
+    )
+}

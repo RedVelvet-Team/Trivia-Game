@@ -1,4 +1,4 @@
-package com.redvelvet.data.local.preferences
+package com.redvelvet.data.local.preferences.store
 
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
