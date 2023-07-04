@@ -1,6 +1,6 @@
-package com.redvelvet.data.local
+package com.redvelvet.data.local.preferences.source
 
-import com.redvelvet.data.local.preferences.PreferencesDataStore
+import com.redvelvet.data.local.preferences.store.PreferencesDataStore
 import javax.inject.Inject
 
 class PreferencesDataSourceImpl @Inject constructor(

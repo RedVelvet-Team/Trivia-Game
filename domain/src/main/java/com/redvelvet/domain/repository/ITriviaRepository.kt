@@ -2,16 +2,10 @@ package com.redvelvet.domain.repository
 
 interface ITriviaRepository {
 
-    suspend fun getQuestionsRandomly()
+    /*suspend fun getQuestionsRandomly()
 
     suspend fun getQuestionsByLimit(
         limit: Int = 1,
-        types: String = "text_choice"
-    )
-
-    suspend fun getQuestionsByTag(
-        limit: Int = 1,
-        vararg tag: String,
         types: String = "text_choice"
     )
 
@@ -25,6 +19,12 @@ interface ITriviaRepository {
         limit: Int = 1,
         vararg category: String,
         types: String = "text_choice"
-    )
+    )*/
 
+    suspend fun getRandomSetOfQuestion(
+        limit: Int? = null,
+        categories: String? = null,
+        difficulties: String? = null,
+        types: String? = null,
+    )
 }
