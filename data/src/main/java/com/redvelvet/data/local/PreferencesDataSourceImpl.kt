@@ -1,4 +1,4 @@
-package com.redvelvet.data.local.source
+package com.redvelvet.data.local
 
 import com.redvelvet.data.local.preferences.PreferencesDataStore
 import javax.inject.Inject
