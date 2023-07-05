@@ -1,5 +1,7 @@
 package com.redvelvet.domain.repository
 
+import com.redvelvet.domain.entity.QuestionEntity
+
 interface ITriviaRepository {
 
     /*suspend fun getQuestionsRandomly()
@@ -21,10 +23,10 @@ interface ITriviaRepository {
         types: String = "text_choice"
     )*/
 
-    suspend fun getRandomSetOfQuestion(
+    suspend fun getRandomSetOfQuestion (
         limit: Int? = null,
         categories: String? = null,
         difficulties: String? = null,
-        types: String? = null,
-    )
+        types: String? = null
+    ): List<QuestionEntity>
 }
