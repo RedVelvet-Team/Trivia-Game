@@ -1,9 +1,9 @@
-package com.redvelvet.trivia_game.ui.theme
+package com.redvelvet.presentation.ui.theme
 
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
-import com.redvelvet.trivia_game.R
+import com.redvelvet.presentation.R
 
 val Poppins = FontFamily(
     Font(R.font.poppins_regular, weight = FontWeight.Normal),
