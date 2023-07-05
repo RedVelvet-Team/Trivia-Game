@@ -2,7 +2,7 @@ package com.redvelvet.data.repository
 
 import com.redvelvet.data.mapper.toQuestionEntity
 import com.redvelvet.data.source.RemoteDataSource
-import com.redvelvet.domain.entity.QuestionEntity
+import com.redvelvet.domain.entity.Question
 import com.redvelvet.domain.repository.ITriviaRepository
 import javax.inject.Inject
 
@@ -15,7 +15,7 @@ class ITriviaRepositoryImpl @Inject constructor(
         categories: String?,
         difficulties: String?,
         types: String?
-    ): List<QuestionEntity> {
+    ): List<Question> {
         return remoteDataSource.getRandomSetOfQuestion(
             categories = categories,
             limit = limit,
