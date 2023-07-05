@@ -1,6 +1,6 @@
 package com.redvelvet.data.repository
 
-import com.redvelvet.data.mapper.toQuestionEntity
+import com.redvelvet.data.mapper.toDomain
 import com.redvelvet.data.source.RemoteDataSource
 import com.redvelvet.domain.entity.Question
 import com.redvelvet.domain.repository.ITriviaRepository
@@ -20,8 +20,8 @@ class ITriviaRepositoryImpl @Inject constructor(
             categories = categories,
             limit = limit,
             difficulties = difficulties,
-           types = types
-        ).map { it.toQuestionEntity() }
+            types = types
+        ).map { it.toDomain() }
 
     }
 }
