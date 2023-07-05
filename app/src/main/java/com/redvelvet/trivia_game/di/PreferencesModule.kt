@@ -18,8 +18,7 @@ abstract class PreferencesModule {
     @Singleton
     abstract fun bindPreferencesDataSource(
         preferencesDataSourceImpl: PreferencesDataSourceImpl
-    )
-            : PreferencesDataSource
+    ): PreferencesDataSource
 
     @Binds
     @Singleton
