@@ -23,10 +23,14 @@ interface ITriviaRepository {
         types: String = "text_choice"
     )*/
 
-    suspend fun getRandomSetOfQuestion (
+    suspend fun getRandomSetOfQuestion(
         limit: Int? = null,
         categories: String? = null,
         difficulties: String? = null,
         types: String? = null
     ): List<Question>
+
+    suspend fun saveScore(score: Int)
+    suspend fun getScore(): Int
+
 }
