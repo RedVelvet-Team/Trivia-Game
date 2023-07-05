@@ -1,6 +1,6 @@
 package com.redvelvet.domain.repository
 
-import com.redvelvet.domain.entity.QuestionEntity
+import com.redvelvet.domain.entity.Question
 
 interface ITriviaRepository {
 
@@ -28,5 +28,5 @@ interface ITriviaRepository {
         categories: String? = null,
         difficulties: String? = null,
         types: String? = null
-    ): List<QuestionEntity>
+    ): List<Question>
 }
