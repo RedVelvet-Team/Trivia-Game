@@ -1,11 +1,13 @@
 package com.redvelvet.data.repository
 
+import com.redvelvet.data.mapper.toQuestionEntity
 import com.redvelvet.data.source.RemoteDataSource
+import com.redvelvet.domain.entity.QuestionEntity
 import com.redvelvet.domain.repository.ITriviaRepository
 import javax.inject.Inject
 
 class ITriviaRepositoryImpl @Inject constructor(
-    remoteDataSource: RemoteDataSource
+    private val remoteDataSource: RemoteDataSource
 ) : ITriviaRepository {
 
     override suspend fun getRandomSetOfQuestion(
@@ -13,7 +15,13 @@ class ITriviaRepositoryImpl @Inject constructor(
         categories: String?,
         difficulties: String?,
         types: String?
-    ) {
-        TODO("Not yet implemented")
+    ): List<QuestionEntity> {
+        return remoteDataSource.getRandomSetOfQuestion(
+            categories = categories,
+            limit = limit,
+            difficulties = difficulties,
+           types = types
+        ).map { it.toQuestionEntity() }
+
     }
 }
