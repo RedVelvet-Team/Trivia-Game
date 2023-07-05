@@ -1,25 +1,30 @@
 package com.redvelvet.domain.usecases
 
-import com.redvelvet.domain.repository.ITriviaRepository
+import com.redvelvet.domain.entity.Configurations
 import javax.inject.Inject
 
 
 class StartGameUseCase @Inject constructor(
     private val gameSession: GameSession,
-    private val triviaRepository: ITriviaRepository,
     private val casualModeUseCase: StartCasualGameUseCase,
     private val timedModeUseCase: StartTimedGameUseCase,
-    private val survivalModeUseCase: StartSurvivalGameUseCase
+    private val survivalModeUseCase: StartSurvivalGameUseCase,
+    private val getCustomizedQuestionsUsecase: GetCustomizedQuestionsUsecase
 ) {
-    suspend fun invoke(gameMode: Int) {
-        gameSession.isGameOver = false
-        gameSession.score = 0
-        triviaRepository.saveScore(gameSession.score)
-
+    suspend fun invoke(gameMode: Int, configurations: Configurations) {
+        configureGameConfigurations(configurations)
         when (gameMode) {
-            1 -> casualModeUseCase.invoke()
-            2 -> timedModeUseCase.invoke()
-            3 -> survivalModeUseCase.invoke()
+            1 -> casualModeUseCase.invoke(gameSession)
+            2 -> timedModeUseCase.invoke(gameSession)
+            3 -> survivalModeUseCase.invoke(gameSession)
         }
     }
+
+    private suspend fun configureGameConfigurations(configurations: Configurations) {
+        gameSession.isGameOver = false
+        gameSession.score = 0
+        getCustomizedQuestionsUsecase.invoke(configurations = configurations)
+    }
 }
+
+

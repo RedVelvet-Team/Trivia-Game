@@ -1,9 +1,9 @@
 package com.redvelvet.domain.usecases
 
-import com.redvelvet.domain.entity.QuestionEntity
+import com.redvelvet.domain.entity.Question
 
 class GameSession {
     var score: Int = 0
-    var currentQuestion: QuestionEntity? = null
+    var currentQuestion: Question? = null
     var isGameOver: Boolean = false
 }

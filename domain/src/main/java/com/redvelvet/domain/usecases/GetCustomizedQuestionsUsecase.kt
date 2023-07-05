@@ -1,6 +1,7 @@
 package com.redvelvet.domain.usecases
 
-import com.redvelvet.domain.entity.QuestionEntity
+import com.redvelvet.domain.entity.Configurations
+import com.redvelvet.domain.entity.Question
 import com.redvelvet.domain.repository.ITriviaRepository
 import javax.inject.Inject
 
@@ -9,21 +10,21 @@ class GetCustomizedQuestionsUsecase @Inject constructor(
 ) {
 
     private var questionIndex = 0
-    private var questions: List<QuestionEntity> = listOf()
+    private var questions: List<Question> = listOf()
 
-    suspend fun fetchQuestions(
-        limit: Int = 10,
-        categories: List<String>,
-        difficulties: List<String>,
-        types: String = "text_choice"
+    suspend fun invoke(
+        configurations: Configurations
     ) {
         questions = triviaRepository.getRandomSetOfQuestion(
-            limit, categories.toCommaSeparatedString(), difficulties.toCommaSeparatedString(), types
+            configurations.limit,
+            configurations.categories.toCommaSeparatedString(),
+            configurations.difficulties.toCommaSeparatedString(),
+            configurations.types
         )
         questionIndex = 0
     }
 
-    fun getNextQuestion(): QuestionEntity? {
+    fun getNextQuestion(): Question? {
         return if (questionIndex < questions.size) {
             questions[questionIndex++]
         } else {
