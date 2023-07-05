@@ -13,20 +13,22 @@ class RemoteDataSourceImpl @Inject constructor(
     private val apiService: ApiService
 ) : RemoteDataSource {
 
+
     override suspend fun getRandomSetOfQuestion(
-        limit: Int,
-        categories: String,
-        difficulties: String,
-        types: String
+        limit: Int?,
+        categories: String?,
+        difficulties: String?,
+        types: String?
     ): List<QuestionDto> {
-        return wrapResponse {
-            apiService.getRandomSetOfQuestion(
-                limit,
-                categories,
-                difficulties,
-                types
-            )
-        }
+//        return wrapResponse {
+//            apiService.getRandomSetOfQuestion(
+//                limit,
+//                categories,
+//                difficulties,
+//                types
+//            )
+//        }
+        return emptyList()
     }
 
     private suspend fun <T> wrapResponse(call: suspend () -> Response<T>): T {
