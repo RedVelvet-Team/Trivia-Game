@@ -9,9 +9,8 @@ class GetCustomizedQuestionsUsecase @Inject constructor(
     private val triviaRepository: ITriviaRepository
 ) {
 
-    private var questionIndex = 0
-    private var questions: List<Question> = listOf()
-
+    var questionIndex = 0
+    var questions: List<Question> = listOf()
     suspend fun invoke(
         configurations: Configurations
     ) {
@@ -22,14 +21,6 @@ class GetCustomizedQuestionsUsecase @Inject constructor(
             configurations.types
         )
         questionIndex = 0
-    }
-
-    fun getNextQuestion(): Question? {
-        return if (questionIndex < questions.size) {
-            questions[questionIndex++]
-        } else {
-            null
-        }
     }
 
     private fun List<String>.toCommaSeparatedString(): String {
