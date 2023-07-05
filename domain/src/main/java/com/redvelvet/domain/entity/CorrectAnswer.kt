@@ -1,6 +1,6 @@
 package com.redvelvet.domain.entity
 
-data class CorrectAnswerEntity(
+data class CorrectAnswer(
     val height: Int,
     val size: Int,
     val url: String,
