@@ -11,17 +11,16 @@ class GetCustomizedQuestionsUsecase @Inject constructor(
     private var questionIndex = 0
     private var questions: List<QuestionEntity> = listOf()
 
-    suspend operator fun invoke(
+    suspend fun fetchQuestions(
         limit: Int = 10,
         categories: List<String>,
         difficulties: List<String>,
         types: String = "text_choice"
-    ): List<QuestionEntity> {
+    ) {
         questions = triviaRepository.getRandomSetOfQuestion(
             limit, categories.toCommaSeparatedString(), difficulties.toCommaSeparatedString(), types
         )
         questionIndex = 0
-        return questions
     }
 
     fun getNextQuestion(): QuestionEntity? {
