@@ -1,7 +1,8 @@
 package com.redvelvet.presentation.ui.uiStates
 
 data class ConfigurationsUiState(
-    val modes: List<ConfigurationUiState> = emptyList()
+    val modes: List<ConfigurationUiState> = emptyList(),
+    val selected: ConfigurationMode = ConfigurationMode.CASUAL_MODE
 )
 
 data class ConfigurationUiState(
