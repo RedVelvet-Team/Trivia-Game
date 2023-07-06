@@ -18,8 +18,9 @@ import com.redvelvet.presentation.ui.theme.Poppins
 @Composable
 fun Chip(
     label: String,
+    modifier: Modifier = Modifier,
     onClick: () -> Unit,
-    enabled: Boolean = false
+    enabled: Boolean = false,
 ) {
     SuggestionChip(
         onClick = onClick,
@@ -29,17 +30,21 @@ fun Chip(
                 fontFamily = Poppins,
                 textAlign = TextAlign.Center,
                 fontSize = 14.sp,
-                modifier = Modifier.padding(vertical = 10.dp)
+                modifier = modifier.padding(vertical = 10.dp)
             )
         },
         elevation = null,
-        border = null,
+        border = SuggestionChipDefaults.suggestionChipBorder(
+            borderWidth = 1.dp,
+            borderColor = Color(0xFF7B5C8B),
+            disabledBorderColor = Color(0xFF7B5C8B),
+        ),
         enabled = enabled,
         shape = RoundedCornerShape(16.dp),
         colors = SuggestionChipDefaults.suggestionChipColors(
             labelColor = Color(0xFFFFFFFF),
-            containerColor = Color(0xFF5C3570),
-            disabledLabelColor = Color(0x99212121),
+            containerColor = Color(0xFF7B5C8B),
+            disabledLabelColor = Color(0xFF7B5C8B),
             disabledContainerColor = Color(0xFFF1F1F1)
         ),
     )

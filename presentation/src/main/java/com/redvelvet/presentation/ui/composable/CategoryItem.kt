@@ -59,7 +59,7 @@ fun CategoryItem(
             Icon(
                 painter = painterResource(iconResource),
                 contentDescription = null,
-                tint = Color(0xFF5C3570),
+                tint = Color(0xFF7B5C8B),
                 modifier = Modifier.size(48.dp)
             )
             Spacer(modifier = Modifier.height(8.dp))

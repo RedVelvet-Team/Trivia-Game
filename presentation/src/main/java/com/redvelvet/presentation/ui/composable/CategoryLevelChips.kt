@@ -12,14 +12,15 @@ import com.redvelvet.presentation.R
 
 @Composable
 fun CategoryLevelChips() {
+    val chips = listOf(
+        stringResource(R.string.easy),
+        stringResource(R.string.medium),
+        stringResource(R.string.difficult),
+    )
+
     Row(
         modifier = Modifier.fillMaxWidth(),
     ) {
-        val chips = listOf(
-            stringResource(R.string.easy),
-            stringResource(R.string.medium),
-            stringResource(R.string.difficult),
-        )
         chips.forEachIndexed { index, label ->
             Chip(
                 label = label,
