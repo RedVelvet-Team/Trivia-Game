@@ -2,6 +2,7 @@ package com.redvelvet.presentation.ui.composable
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -37,7 +38,8 @@ import com.redvelvet.presentation.ui.uiStates.ConfigurationUiState
 fun ItemMode(
     configurationUiState: ConfigurationUiState,
     selected: ConfigurationMode,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    onClickMode: (ConfigurationUiState) -> Unit
 ) {
     val isSelected = configurationUiState.mode == selected
     var borderStroke: BorderStroke? = null
@@ -49,7 +51,8 @@ fun ItemMode(
     Card(
         modifier
             .fillMaxWidth()
-            .padding(16.dp),
+            .padding(16.dp)
+            .clickable { onClickMode(configurationUiState) },
         shape = RoundedCornerShape(16.dp),
         border = borderStroke,
         colors = CardDefaults.cardColors(containerColor = BackgroundLight)
@@ -105,6 +108,7 @@ fun previewItemMode() {
             mode = ConfigurationMode.CASUAL_MODE,
             modeDescription = "Take your time, explore diverse topics, collect more points, and enjoy a stress-free trivia experience!",
         ),
-        selected = ConfigurationMode.CASUAL_MODE
+        selected = ConfigurationMode.CASUAL_MODE,
+        onClickMode = {}
     )
 }
