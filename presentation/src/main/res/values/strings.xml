@@ -26,6 +26,10 @@
     <string name="choose_category_description">Choose a maximum of 3 categories and start your trivia adventure now!</string>
     <string name="select_your_preferred_Categories">Select your preferred Categories</string>
     <string name="history">History</string>
+    <string name="level_difficulty">Level Difficulty</string>
+    <string name="questions_categories">Questions Categories</string>
+    <string name="category_max_selection">You can select the questions difficulties, and a maximum of 3 categories to start the game.</string>
+    <string name="customize_your_questions">Customize your questions</string>
 
 
 </resources>
