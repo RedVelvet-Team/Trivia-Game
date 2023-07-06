@@ -20,8 +20,8 @@ class ITriviaRepositoryImpl @Inject constructor(
             categories = categories,
             limit = limit,
             difficulties = difficulties,
-            types = types
-        ).map { it.toDomain() }
+           types = types
+        ).map { it.toDomain()}
 
     }
 }

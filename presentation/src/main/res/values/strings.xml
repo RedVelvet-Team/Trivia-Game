@@ -25,5 +25,7 @@
     <string name="select_your_category">Select your Category</string>
     <string name="choose_category_description">Choose a maximum of 3 categories and start your trivia adventure now!</string>
     <string name="select_your_preferred_Categories">Select your preferred Categories</string>
+    <string name="history">History</string>
+
 
 </resources>
