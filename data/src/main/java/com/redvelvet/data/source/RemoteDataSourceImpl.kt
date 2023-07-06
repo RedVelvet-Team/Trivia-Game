@@ -20,15 +20,15 @@ class RemoteDataSourceImpl @Inject constructor(
         difficulties: String?,
         types: String?
     ): List<QuestionDto> {
-//        return wrapResponse {
-//            apiService.getRandomSetOfQuestion(
-//                limit,
-//                categories,
-//                difficulties,
-//                types
-//            )
-//        }
-        return emptyList()
+        return wrapResponse {
+            apiService.getRandomSetOfQuestion(
+                limit = limit!!,
+                categories = categories!!,
+                difficulties = difficulties!!,
+                types = types!!
+            )
+        }
+//        return emptyList()
     }
 
     private suspend fun <T> wrapResponse(call: suspend () -> Response<T>): T {
