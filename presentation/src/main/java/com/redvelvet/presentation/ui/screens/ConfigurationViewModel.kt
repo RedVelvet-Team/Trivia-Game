@@ -8,9 +8,10 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
+import javax.inject.Inject
 
 @HiltViewModel
-class ConfigurationsViewModel : ViewModel() {
+class ConfigurationViewModel @Inject constructor() : ViewModel() {
     private val _state = MutableStateFlow(ConfigurationsUiState())
     val state = _state.asStateFlow()
 
@@ -34,5 +35,9 @@ class ConfigurationsViewModel : ViewModel() {
             ),
         )
         _state.update { it.copy(modes = modes) }
+    }
+
+    fun onClickMode(state:ConfigurationUiState){
+        _state.update { it.copy(selected = state.mode) }
     }
 }
