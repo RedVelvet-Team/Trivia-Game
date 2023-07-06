@@ -9,24 +9,12 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
-import com.redvelvet.presentation.R
+import com.redvelvet.presentation.ui.screen.category.CategoryItem
 
 @Composable
-fun CategoriesGrid() {
-    val categories = mapOf(
-        stringResource(R.string.music) to R.drawable.ic_music_play,
-        stringResource(R.string.history) to R.drawable.ic_history,
-        stringResource(R.string.film_and_tv) to R.drawable.ic_film_projector_svgrepo,
-        stringResource(R.string.arts_and_literature) to R.drawable.ic_art,
-        stringResource(R.string.food_and_drink) to R.drawable.ic_food,
-        stringResource(R.string.science) to R.drawable.ic_applications_science,
-        stringResource(R.string.start) to R.drawable.ic_start,
-        stringResource(R.string.sport_and_leisure) to R.drawable.ic_food,
-        stringResource(R.string.geography) to R.drawable.ic_earth_globe_geography_svgrepo,
-        stringResource(R.string.society_and_culture) to R.drawable.ic_society_and_culture,
-        stringResource(R.string.general_knowledge) to R.drawable.ic_food,
-    )
-
+fun CategoriesGrid(
+    categories: List<CategoryItem>,
+) {
     LazyVerticalGrid(
         columns = GridCells.Fixed(2),
         verticalArrangement = Arrangement.spacedBy(16.dp),
@@ -36,9 +24,14 @@ fun CategoriesGrid() {
         contentPadding = PaddingValues(bottom = 100.dp),
         content = {
             items(categories.size) { index ->
-                val category = categories.keys.toList()[index]
-                val icon = categories.values.toList()[index]
-                CategoryItem(label = category, iconResource = icon, selected = index == 3)
+                val category = categories[index]
+                CategoryItem(
+                    label = stringResource(category.label),
+                    iconResource = category.icon,
+                    selected = category.isSelected,
+                    enabled = category.isEnabled
+                )
             }
-        })
+        },
+    )
 }

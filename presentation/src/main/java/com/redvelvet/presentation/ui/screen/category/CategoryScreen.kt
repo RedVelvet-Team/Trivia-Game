@@ -49,7 +49,7 @@ fun CategoryScreenContent(
         CategoryLevelChips()
         SpacerVertical16()
         Box {
-            CategoriesGrid()
+            CategoriesGrid(categories = emptyList())
             CustomButton(
                 label = stringResource(R.string.start),
                 onClick = { },
