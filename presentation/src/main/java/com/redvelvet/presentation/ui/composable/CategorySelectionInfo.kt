@@ -18,6 +18,8 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.redvelvet.presentation.R
@@ -44,11 +46,19 @@ fun CategorySelectionInfo() {
             Spacer(modifier = Modifier.width(8.dp))
             Text(
                 text = stringResource(R.string.category_max_selection),
-                fontFamily = Poppins,
                 fontSize = 10.sp,
+                fontFamily = Poppins,
+                fontWeight = FontWeight(400),
                 color = Color(0x99212121),
                 maxLines = 3,
+                lineHeight = 15.sp,
             )
         }
     }
+}
+
+@Preview
+@Composable
+fun CategorySelectionInfoPreview() {
+    CategorySelectionInfo()
 }
