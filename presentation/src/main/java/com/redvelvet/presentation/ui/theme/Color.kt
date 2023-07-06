@@ -21,6 +21,6 @@ val Black = Color(0xFF000000)
 val DarkGray = Color(0xF07A7A7A)
 val LightGray = Color(0x99F6F6F6)
 
-val PrimaryColor = Color(0xF09850BD)
+val PrimaryColor = Color(0xFF5C3570)
 val Red = Color(0xF0C83132)
 val Green = Color(0xF032925C)
