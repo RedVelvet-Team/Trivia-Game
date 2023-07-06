@@ -1,5 +1,6 @@
 package com.redvelvet.presentation.ui.composable
 
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -27,12 +28,17 @@ fun Chip(
         label = {
             Text(
                 text = label,
-                fontFamily = Poppins,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(vertical = 10.dp)
+                    .padding(end = 8.dp),
                 textAlign = TextAlign.Center,
+                fontFamily = Poppins,
                 fontSize = 14.sp,
-                modifier = modifier.padding(vertical = 10.dp)
             )
         },
+        icon = null,
+        modifier = modifier,
         elevation = null,
         border = SuggestionChipDefaults.suggestionChipBorder(
             borderWidth = 1.dp,

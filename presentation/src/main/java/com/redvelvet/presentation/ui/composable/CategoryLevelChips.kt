@@ -25,7 +25,8 @@ fun CategoryLevelChips() {
             Chip(
                 label = label,
                 onClick = {},
-                enabled = index == 0
+                enabled = index == 0,
+                modifier = Modifier.weight(1f)
             )
             Spacer(modifier = Modifier.width(8.dp))
         }
