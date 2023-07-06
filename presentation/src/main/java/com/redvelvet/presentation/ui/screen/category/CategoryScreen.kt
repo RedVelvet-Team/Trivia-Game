@@ -20,7 +20,7 @@ import com.redvelvet.presentation.ui.composable.CategorySelectionInfo
 import com.redvelvet.presentation.ui.composable.CustomButton
 import com.redvelvet.presentation.ui.composable.TriviaAppBar
 import com.redvelvet.presentation.ui.spacer.SpacerVertical16
-import com.redvelvet.presentation.ui.spacer.SpacerVertical24
+import com.redvelvet.presentation.ui.spacer.SpacerVertical8
 
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -43,7 +43,7 @@ fun CategoryScreenContent(
             .padding(horizontal = 16.dp)
             .padding(paddingValues)
     ) {
-        SpacerVertical24()
+        SpacerVertical8()
         CategorySelectionInfo()
         SpacerVertical16()
         CategoryLevelChips()
