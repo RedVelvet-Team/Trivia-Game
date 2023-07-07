@@ -18,6 +18,8 @@ val ContainerDark = Color(0xFF37394B)
 
 val BodyColor = Color(0x66212121)
 
+val CardBackgroundLight = Color(0xFFF1F1F1)
+
 val White = Color(0xF0F6F6F6)
 val Black = Color(0xFF000000)
 val DarkGray = Color(0xF07A7A7A)

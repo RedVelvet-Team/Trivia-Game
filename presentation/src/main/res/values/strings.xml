@@ -28,5 +28,6 @@
     <string name="casual_mode">Casual Mode</string>
     <string name="timed_mode">Timed Mode</string>
     <string name="survival_mode">Survival Mode</string>
+    <string name="configurations_title">Select your preferred playing mode and start your trivia adventure now!</string>
 
 </resources>
