@@ -7,7 +7,8 @@ data class ConfigurationsUiState(
 
 data class ConfigurationUiState(
     val mode: ConfigurationMode = ConfigurationMode.CASUAL_MODE,
-    val modeDescription: String = ""
+    val modeDescription: String = "",
+    val modeImage:Int = 0
 )
 
 enum class ConfigurationMode{
