@@ -24,3 +24,5 @@ val LightGray = Color(0x99F6F6F6)
 val PrimaryColor = Color(0xF09850BD)
 val Red = Color(0xF0C83132)
 val Green = Color(0xF032925C)
+
+val ButtonColor = Color(0xFF5C3570)
