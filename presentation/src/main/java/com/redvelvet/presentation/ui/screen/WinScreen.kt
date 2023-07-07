@@ -24,6 +24,8 @@ import androidx.compose.ui.unit.sp
 import com.redvelvet.presentation.R
 import com.redvelvet.presentation.ui.composable.ImageWin
 import com.redvelvet.presentation.ui.composable.VerticalSpacer
+import com.redvelvet.presentation.ui.composable.WinText14Sp
+import com.redvelvet.presentation.ui.composable.WinText20Sp
 import com.redvelvet.presentation.ui.theme.BackgroundLight
 import com.redvelvet.presentation.ui.theme.DarkGray
 import com.redvelvet.presentation.ui.theme.Poppins
@@ -59,43 +61,24 @@ fun WinScreen() {
                     description = stringResource(R.string.star_icon),
                     modifier = Modifier.padding(end = 8.dp)
                 )
-
-                Text(
-                    text = stringResource(R.string._1450),
-                    fontSize = 20.sp,
-                    fontFamily = Poppins,
+                WinText20Sp(
+                    textResource = R.string._1450,
                     fontWeight = FontWeight.SemiBold
-                )
+                    )
             }
         }
         VerticalSpacer(space = 24)
-        Text(
-            text = stringResource(id = R.string.great_job),
-            textAlign = TextAlign.Center,
-            fontFamily = Poppins,
-            fontWeight = FontWeight.Medium,
-            fontSize = 20.sp,
-            modifier = Modifier.fillMaxWidth()
-            )
+        WinText20Sp(textResource = R.string.great_job)
         VerticalSpacer(space = 8)
-        Text(
-            text = stringResource(R.string.you_scored_an_impressive_10_out_of_10),
-            textAlign = TextAlign.Center,
-            fontFamily = Poppins,
-            fontWeight = FontWeight.Medium,
-            fontSize = 14.sp,
-            modifier = Modifier.fillMaxWidth()
+        WinText14Sp(
+            stringResource = R.string.you_scored_an_impressive_10_out_of_10,
+            fontWeight = FontWeight.Medium
         )
         VerticalSpacer(space = 32)
-        Text(
-            text = stringResource(R.string.keep_up_the_excellent_work_and_continue_to_make_progress_in_the_level_congratulations),
-            textAlign = TextAlign.Center,
-            fontFamily = Poppins,
-            fontSize = 14.sp,
+        WinText14Sp(
+            stringResource = R.string.keep_up_the_excellent_work,
             color = DarkGray,
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(horizontal = 42.dp)
+            modifier = Modifier.padding(horizontal = 42.dp)
         )
         Spacer(modifier = Modifier.weight(1f))
         Button(

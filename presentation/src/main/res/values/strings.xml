@@ -30,6 +30,6 @@
     <string name="star_icon">star icon</string>
     <string name="_1450">1450</string>
     <string name="you_scored_an_impressive_10_out_of_10">"You scored an impressive 10 out of 10 "</string>
-    <string name="keep_up_the_excellent_work_and_continue_to_make_progress_in_the_level_congratulations">"        Keep up the excellent work and        \ncontinue to make progress in the level. Congratulations!\n"</string>
+    <string name="keep_up_the_excellent_work">"        Keep up the excellent work and        \ncontinue to make progress in the level. Congratulations!\n"</string>
 
 </resources>
