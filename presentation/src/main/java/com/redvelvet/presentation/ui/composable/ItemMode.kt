@@ -27,6 +27,7 @@ import com.redvelvet.presentation.R
 import com.redvelvet.presentation.ui.theme.BackgroundLight
 import com.redvelvet.presentation.ui.theme.Black
 import com.redvelvet.presentation.ui.theme.BodyColor
+import com.redvelvet.presentation.ui.theme.CardBackgroundLight
 import com.redvelvet.presentation.ui.theme.ContainerLight
 import com.redvelvet.presentation.ui.theme.Poppins
 import com.redvelvet.presentation.ui.theme.PrimaryColor
@@ -51,23 +52,16 @@ fun ItemMode(
     Card(
         modifier
             .fillMaxWidth()
-            .padding(16.dp)
+            .padding(horizontal = 16.dp)
             .clickable { onClickMode(configurationUiState) },
         shape = RoundedCornerShape(16.dp),
         border = borderStroke,
-        colors = CardDefaults.cardColors(containerColor = BackgroundLight)
+        colors = CardDefaults.cardColors(containerColor = CardBackgroundLight)
     ) {
         Row(verticalAlignment = Alignment.CenterVertically) {
             SpacerHorizontal16()
-            val painter: Painter = when (configurationUiState.mode) {
-                ConfigurationMode.CASUAL_MODE -> painterResource(id = R.drawable.image_casual_mode)
-
-                ConfigurationMode.TIMED_MODE -> painterResource(id = R.drawable.image_timed_mode)
-
-                else -> painterResource(id = R.drawable.image_survival_mode)
-            }
             Image(
-                painter = painter,
+                painter = painterResource(configurationUiState.modeImage),
                 contentDescription = null,
                 modifier = Modifier.size(70.dp)
             )
