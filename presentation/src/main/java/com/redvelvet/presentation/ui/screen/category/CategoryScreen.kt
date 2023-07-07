@@ -8,11 +8,13 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.redvelvet.presentation.R
 import com.redvelvet.presentation.ui.composable.CategoriesGrid
 import com.redvelvet.presentation.ui.composable.CategoryLevelChips
@@ -25,17 +27,21 @@ import com.redvelvet.presentation.ui.spacer.SpacerVertical8
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun CategoryScreen() {
+fun CategoryScreen(viewModel: CategoryScreenViewModel = hiltViewModel()) {
+    val list = viewModel.categories.collectAsState().value
     Scaffold(
         topBar = { TriviaAppBar(title = stringResource(R.string.customize_your_questions)) },
     ) { paddingValues ->
-        CategoryScreenContent(paddingValues)
+        CategoryScreenContent(list,paddingValues,
+        viewModel::toggleChoiceSelection)
     }
 }
 
 @Composable
 fun CategoryScreenContent(
+    list: List<CategoryItem>,
     paddingValues: PaddingValues,
+    selectItem: (CategoryItem) -> Unit,
 ) {
     Column(
         modifier = Modifier
@@ -49,7 +55,7 @@ fun CategoryScreenContent(
         CategoryLevelChips()
         SpacerVertical16()
         Box {
-            CategoriesGrid(categories = emptyList())
+            CategoriesGrid(selectItem,categories = list)
             CustomButton(
                 label = stringResource(R.string.start),
                 onClick = { },

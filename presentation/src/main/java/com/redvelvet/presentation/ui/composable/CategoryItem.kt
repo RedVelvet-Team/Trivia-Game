@@ -18,32 +18,32 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.redvelvet.presentation.R
+import com.redvelvet.presentation.ui.screen.category.CategoryItem
 import com.redvelvet.presentation.ui.spacer.SpacerVertical8
 import com.redvelvet.presentation.ui.theme.Poppins
 
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun CategoryItem(
-    label: String,
-    iconResource: Int,
-    selected: Boolean = false,
-    enabled: Boolean = true,
+fun OneCategoryItem(
+    item: CategoryItem,
+    select:(CategoryItem) -> Unit,
 ) {
     Card(
-        onClick = {},
+        onClick = {select(item)},
         modifier = Modifier
             .fillMaxWidth()
             .wrapContentHeight(),
-        enabled = enabled,
+        enabled = item.isEnabled,
         shape = RoundedCornerShape(16.dp),
-        border = if (selected && enabled) BorderStroke(2.dp, Color(0xFF5C3570)) else null,
+        border = if (item.isSelected && item.isEnabled) BorderStroke(2.dp, Color(0xFF5C3570)) else null,
         colors = CardDefaults.cardColors(
             containerColor = Color(0xFFF1F1F1),
             disabledContainerColor = Color(0xFFF1F1F1),
@@ -55,19 +55,19 @@ fun CategoryItem(
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Icon(
-                painter = painterResource(iconResource),
+                painter = painterResource(item.icon),
                 contentDescription = null,
-                tint = if (enabled) Color(0xFF5C3570) else Color(0xFF7B5C8B),
+                tint = if (item.isEnabled) Color(0xFF5C3570) else Color(0xFF7B5C8B),
                 modifier = Modifier.size(48.dp),
             )
             SpacerVertical8()
             Text(
-                text = label,
+                text = stringResource(id = item.label),
                 modifier = Modifier.fillMaxWidth(),
                 fontSize = 14.sp,
                 fontFamily = Poppins,
                 fontWeight = FontWeight.Medium,
-                color = if (enabled) Color(0x99121212) else Color(0xE5212121),
+                color = if (item.isEnabled) Color(0x99121212) else Color(0xE5212121),
                 textAlign = TextAlign.Center,
                 maxLines = 1
             )
@@ -78,10 +78,12 @@ fun CategoryItem(
 @Preview
 @Composable
 fun CategoryItemPreview() {
-    CategoryItem(
-        label = "Arts",
-        iconResource = R.drawable.ic_art,
-        selected = true,
-        enabled = false
-    )
+    OneCategoryItem(
+        item = CategoryItem(
+            id = 1,
+            label = R.string.film_and_tv,
+            icon = R.drawable.ic_film_projector_svgrepo,
+            isSelected = false,
+            isEnabled = true)
+    ) {}
 }

@@ -12,7 +12,7 @@ import androidx.compose.ui.unit.dp
 import com.redvelvet.presentation.ui.screen.category.CategoryItem
 
 @Composable
-fun CategoriesGrid(
+fun CategoriesGrid(selectItem:(CategoryItem) -> Unit,
     categories: List<CategoryItem>,
 ) {
     LazyVerticalGrid(
@@ -25,12 +25,7 @@ fun CategoriesGrid(
         content = {
             items(categories.size) { index ->
                 val category = categories[index]
-                CategoryItem(
-                    label = stringResource(category.label),
-                    iconResource = category.icon,
-                    selected = category.isSelected,
-                    enabled = category.isEnabled
-                )
+                OneCategoryItem(item = category, select = selectItem)
             }
         },
     )
