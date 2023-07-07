@@ -1,6 +1,7 @@
 package com.redvelvet.presentation.ui.screens
 
 import androidx.lifecycle.ViewModel
+import com.redvelvet.presentation.R
 import com.redvelvet.presentation.ui.uiStates.ConfigurationMode
 import com.redvelvet.presentation.ui.uiStates.ConfigurationUiState
 import com.redvelvet.presentation.ui.uiStates.ConfigurationsUiState
@@ -23,15 +24,18 @@ class ConfigurationViewModel @Inject constructor() : ViewModel() {
         val modes = listOf(
             ConfigurationUiState(
                 mode = ConfigurationMode.CASUAL_MODE,
-                modeDescription = "Take your time, explore diverse topics, collect more points, and enjoy a stress-free trivia experience!"
+                modeDescription = "Take your time, explore diverse topics, collect more points, and enjoy a stress-free trivia experience!",
+                modeImage = R.drawable.image_casual_mode
             ),
             ConfigurationUiState(
                 mode = ConfigurationMode.TIMED_MODE,
-                modeDescription = "Test your speed, gather knowledge, and collect points before the timer runs out. if time expires, you lose!"
+                modeDescription = "Test your speed, gather knowledge, and collect points before the timer runs out. if time expires, you lose!",
+                modeImage = R.drawable.image_timed_mode
             ),
             ConfigurationUiState(
                 mode = ConfigurationMode.SURVIVAL_MODE,
-                modeDescription = "Answer correctly to stay in game, any wrong answer means you’re out. See how long you can survive!"
+                modeDescription = "Answer correctly to stay in game, any wrong answer means you’re out. See how long you can survive!",
+                modeImage = R.drawable.image_survival_mode
             ),
         )
         _state.update { it.copy(modes = modes) }
