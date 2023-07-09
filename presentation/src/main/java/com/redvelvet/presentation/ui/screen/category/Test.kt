@@ -1,7 +1,6 @@
 package com.redvelvet.presentation.ui.screen.category
 
 import androidx.compose.foundation.BorderStroke
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -25,6 +24,7 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -52,25 +52,31 @@ fun TestCategoryScreen(viewModel: CategoryScreenViewModel = hiltViewModel()) {
     val list = viewModel.categories.collectAsState().value
     val selectedLevelIndex = viewModel.selectedLevelIndex.collectAsState().value
     val selectedChoice = viewModel.selectedChoices.collectAsState().value.toList()
+
+    val state by viewModel.state.collectAsState()
+
     Scaffold(
         topBar = { TriviaAppBar(title = stringResource(R.string.customize_your_questions)) },
     ) { paddingValues ->
         TestCategoryScreenContent(
-            list,
+            state,
+//            list,
             paddingValues,
             selectedChoice,
-            viewModel::toggleChoiceSelection,
+            viewModel::onCategoryItemClicked,
             selectedLevelIndex,
-            viewModel::selectLevelChip)
+            viewModel::selectLevelChip
+        )
     }
 }
 
 @Composable
 fun TestCategoryScreenContent(
-    list: List<CategoryItem>,
+    state: CategoryUIState,
+//    list: List<CategoryItem>,
     paddingValues: PaddingValues,
     selected: List<CategoryItem>,
-    selectItem: (CategoryItem) -> Unit,
+    onCategoryClick: (CategoryUIState.CategoryItemUIState) -> Unit,
     selectedLevelIndex: Int,
     onSelect: (Int) -> Unit
 ) {
@@ -83,10 +89,10 @@ fun TestCategoryScreenContent(
         SpacerVertical8()
         CategorySelectionInfo()
         SpacerVertical16()
-        TestCategoryLevelChips(selectedLevelIndex,onSelect)
+        TestCategoryLevelChips(selectedLevelIndex, onSelect)
         SpacerVertical16()
         Box {
-            TestCategoriesGrid(selectItem,categories = list,selected)
+            TestCategoriesGrid(onCategoryClick, categories = state.categories, selected)
             CustomButton(
                 label = stringResource(R.string.start),
                 onClick = { },
@@ -95,9 +101,12 @@ fun TestCategoryScreenContent(
         }
     }
 }
+
 @Composable
-fun TestCategoriesGrid(selectItem:(CategoryItem) -> Unit,
-                   categories: List<CategoryItem>,selected: List<CategoryItem>,
+fun TestCategoriesGrid(
+    onClick: (CategoryUIState.CategoryItemUIState) -> Unit,
+    categories: List<CategoryUIState.CategoryItemUIState>,
+    selected: List<CategoryItem>,
 ) {
     LazyVerticalGrid(
         columns = GridCells.Fixed(2),
@@ -109,7 +118,7 @@ fun TestCategoriesGrid(selectItem:(CategoryItem) -> Unit,
         content = {
             items(categories.size) { index ->
                 val category = categories[index]
-                TestOneCategoryItem(item = category, select = selectItem,selected)
+                TestOneCategoryItem(item = category, onClick = onClick)
             }
         },
     )
@@ -118,23 +127,26 @@ fun TestCategoriesGrid(selectItem:(CategoryItem) -> Unit,
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun TestOneCategoryItem(
-    item: CategoryItem,
-    select:(CategoryItem) -> Unit,
-    selected: List<CategoryItem>,
+    item: CategoryUIState.CategoryItemUIState,
+    onClick: (CategoryUIState.CategoryItemUIState) -> Unit,
+//    selected: List<CategoryItem>,
 ) {
     Card(
-        onClick = {select.invoke(item)},
+        onClick = { onClick(item) },
         modifier = Modifier
             .fillMaxWidth()
             .wrapContentHeight(),
         enabled = item.isEnabled,
         shape = RoundedCornerShape(16.dp),
-        border = if(selected.contains(item) && item.isEnabled)
-        {
-            BorderStroke(2.dp, Color(0xFF0A515C))
-                 } else {
-                     null
-                        },
+        border = if (item.isSelected && item.isEnabled) BorderStroke(
+            2.dp,
+            Color(0xFF2A7BFF)
+        ) else null,
+//        border = if (selected.contains(item) && item.isEnabled) {
+//            BorderStroke(2.dp, Color(0xFF0A515C))
+//        } else {
+//            null
+//        },
         colors = CardDefaults.cardColors
             (
             containerColor = Color(0xFFF1F1F1),
@@ -154,7 +166,7 @@ fun TestOneCategoryItem(
             )
             SpacerVertical8()
             Text(
-                text = stringResource(id = item.label),
+                text = item.name,
                 modifier = Modifier.fillMaxWidth(),
                 fontSize = 14.sp,
                 fontFamily = Poppins,
@@ -170,7 +182,7 @@ fun TestOneCategoryItem(
 @Composable
 fun TestCategoryLevelChips(
     index: Int,
-    onSelect:(Int)->Unit
+    onSelect: (Int) -> Unit
 ) {
     val chips = listOf(
         stringResource(R.string.easy),
@@ -192,11 +204,8 @@ fun TestCategoryLevelChips(
 }
 
 
-
 @Preview(showBackground = true, showSystemUi = true)
 @Composable
 fun TestCategoryScreenPreview() {
     TestCategoryScreen()
 }
-
-///*/
