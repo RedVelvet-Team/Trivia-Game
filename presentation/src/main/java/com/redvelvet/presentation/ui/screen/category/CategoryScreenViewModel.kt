@@ -5,10 +5,66 @@ import androidx.lifecycle.ViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.update
 import javax.inject.Inject
 
 @HiltViewModel
 class CategoryScreenViewModel @Inject constructor() : ViewModel() {
+    private val _state = MutableStateFlow(CategoryUIState())
+    val state = _state.asStateFlow()
+
+    init {
+        getCategories()
+    }
+
+    private fun getCategories() {
+        _state.update { it.copy(categories = CategoryFactory().newCategories) }
+    }
+
+    fun onCategoryItemClicked(category: CategoryUIState.CategoryItemUIState) {
+        if (category.isSelected) {
+            toggleCategorySelection(category)
+            enableAllCategories()
+        } else if (state.value.isMaxSelectionReached.not()) {
+            toggleCategorySelection(category)
+            if (state.value.isMaxSelectionReached) disableNotSelectedCategories()
+        }
+    }
+
+    private fun toggleCategorySelection(category: CategoryUIState.CategoryItemUIState) {
+        _state.update { state ->
+            val updatedCategories = state.categories.map {
+                if (it.id == category.id) {
+                    it.copy(isSelected = !it.isSelected)
+                } else {
+                    it
+                }
+            }
+            val selectedCategories = updatedCategories.filter { it.isSelected }
+            state.copy(categories = updatedCategories, selectedCategories = selectedCategories)
+        }
+    }
+
+    private fun enableAllCategories() {
+        _state.update { state ->
+            state.copy(categories = state.categories.map { it.copy(isEnabled = true) })
+        }
+    }
+
+    private fun disableNotSelectedCategories() {
+        _state.update { state ->
+            state.copy(
+                categories = state.categories.map {
+                    if (it.isSelected) it.copy(isEnabled = true)
+                    else it.copy(isEnabled = false)
+                }
+            )
+        }
+    }
+
+    /*
+    * Old Implementation
+    * */
 
     private val _selectedChoices: MutableStateFlow<MutableList<CategoryItem>> =
         MutableStateFlow(mutableListOf())
@@ -35,7 +91,7 @@ class CategoryScreenViewModel @Inject constructor() : ViewModel() {
                 disableUnselectedChoices()
             }
         }
-        Log.i("X15",_selectedChoices.value.toString())
+        Log.i("X15", _selectedChoices.value.toString())
     }
 
     private fun enableAllChoices() {
