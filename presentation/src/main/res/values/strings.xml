@@ -25,5 +25,11 @@
     <string name="select_your_category">Select your Category</string>
     <string name="choose_category_description">Choose a maximum of 3 categories and start your trivia adventure now!</string>
     <string name="select_your_preferred_Categories">Select your preferred Categories</string>
+    <string name="ellipsize_of_background">ellipsize of background</string>
+    <string name="win_icon">win icon</string>
+    <string name="star_icon">star icon</string>
+    <string name="_1450">1450</string>
+    <string name="you_scored_an_impressive_10_out_of_10">"You scored an impressive 10 out of 10 "</string>
+    <string name="keep_up_the_excellent_work">"        Keep up the excellent work and        \ncontinue to make progress in the level. Congratulations!\n"</string>
 
 </resources>
