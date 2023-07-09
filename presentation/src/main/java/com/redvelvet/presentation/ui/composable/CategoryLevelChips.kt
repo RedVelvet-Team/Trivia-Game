@@ -18,14 +18,14 @@ fun CategoryLevelChips(
     Row(
         modifier = Modifier.fillMaxWidth(),
     ) {
-        chips.forEach { chip ->
+        chips.forEachIndexed { index, chip ->
             Chip(
                 label = chip.name,
                 onClick = { onClicked(chip) },
                 modifier = Modifier.weight(1f),
                 selected = chip.selected,
             )
-            Spacer(modifier = Modifier.width(8.dp))
+            if (index != chips.size - 1) Spacer(modifier = Modifier.width(8.dp))
         }
     }
 }
