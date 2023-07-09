@@ -9,6 +9,7 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
@@ -28,20 +29,24 @@ import com.redvelvet.presentation.ui.spacer.SpacerVertical8
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun CategoryScreen(viewModel: CategoryScreenViewModel = hiltViewModel()) {
-    val list = viewModel.categories.collectAsState().value
+    val state by viewModel.state.collectAsState()
+
     Scaffold(
         topBar = { TriviaAppBar(title = stringResource(R.string.customize_your_questions)) },
     ) { paddingValues ->
-        CategoryScreenContent(list,paddingValues,
-        viewModel::toggleChoiceSelection)
+        CategoryScreenContent(
+            state,
+            paddingValues,
+            viewModel::onCategoryItemClicked
+        )
     }
 }
 
 @Composable
 fun CategoryScreenContent(
-    list: List<CategoryItem>,
+    state: CategoryUIState,
     paddingValues: PaddingValues,
-    selectItem: (CategoryItem) -> Unit,
+    onCategoryItemClicked: (CategoryUIState.CategoryItemUIState) -> Unit,
 ) {
     Column(
         modifier = Modifier
@@ -55,7 +60,7 @@ fun CategoryScreenContent(
         CategoryLevelChips()
         SpacerVertical16()
         Box {
-            CategoriesGrid(selectItem,categories = list)
+            CategoriesGrid(onCategoryItemClicked, categories = state.categories)
             CustomButton(
                 label = stringResource(R.string.start),
                 onClick = { },

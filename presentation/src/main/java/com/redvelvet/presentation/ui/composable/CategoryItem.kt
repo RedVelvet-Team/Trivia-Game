@@ -25,7 +25,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.redvelvet.presentation.R
-import com.redvelvet.presentation.ui.screen.category.CategoryItem
+import com.redvelvet.presentation.ui.screen.category.CategoryUIState
 import com.redvelvet.presentation.ui.spacer.SpacerVertical8
 import com.redvelvet.presentation.ui.theme.Poppins
 
@@ -33,17 +33,20 @@ import com.redvelvet.presentation.ui.theme.Poppins
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun OneCategoryItem(
-    item: CategoryItem,
-    select:(CategoryItem) -> Unit,
+    item: CategoryUIState.CategoryItemUIState,
+    onItemClicked: (CategoryUIState.CategoryItemUIState) -> Unit,
 ) {
     Card(
-        onClick = {select(item)},
+        onClick = { onItemClicked(item) },
         modifier = Modifier
             .fillMaxWidth()
             .wrapContentHeight(),
         enabled = item.isEnabled,
         shape = RoundedCornerShape(16.dp),
-        border = if (item.isSelected && item.isEnabled) BorderStroke(2.dp, Color(0xFF5C3570)) else null,
+        border = if (item.isSelected && item.isEnabled) BorderStroke(
+            2.dp,
+            Color(0xFF5C3570)
+        ) else null,
         colors = CardDefaults.cardColors(
             containerColor = Color(0xFFF1F1F1),
             disabledContainerColor = Color(0xFFF1F1F1),
@@ -62,7 +65,7 @@ fun OneCategoryItem(
             )
             SpacerVertical8()
             Text(
-                text = stringResource(id = item.label),
+                text = item.name,
                 modifier = Modifier.fillMaxWidth(),
                 fontSize = 14.sp,
                 fontFamily = Poppins,
@@ -79,11 +82,12 @@ fun OneCategoryItem(
 @Composable
 fun CategoryItemPreview() {
     OneCategoryItem(
-        item = CategoryItem(
+        item = CategoryUIState.CategoryItemUIState(
             id = 1,
-            label = R.string.film_and_tv,
+            name = stringResource(id = R.string.arts_and_literature),
             icon = R.drawable.ic_film_projector_svgrepo,
             isSelected = false,
-            isEnabled = true)
+            isEnabled = true
+        )
     ) {}
 }

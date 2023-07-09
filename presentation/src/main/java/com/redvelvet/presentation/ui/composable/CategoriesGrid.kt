@@ -7,13 +7,13 @@ import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
-import com.redvelvet.presentation.ui.screen.category.CategoryItem
+import com.redvelvet.presentation.ui.screen.category.CategoryUIState
 
 @Composable
-fun CategoriesGrid(selectItem:(CategoryItem) -> Unit,
-    categories: List<CategoryItem>,
+fun CategoriesGrid(
+    onItemClicked: (CategoryUIState.CategoryItemUIState) -> Unit,
+    categories: List<CategoryUIState.CategoryItemUIState>,
 ) {
     LazyVerticalGrid(
         columns = GridCells.Fixed(2),
@@ -25,7 +25,7 @@ fun CategoriesGrid(selectItem:(CategoryItem) -> Unit,
         content = {
             items(categories.size) { index ->
                 val category = categories[index]
-                OneCategoryItem(item = category, select = selectItem)
+                OneCategoryItem(item = category, onItemClicked = onItemClicked)
             }
         },
     )
