@@ -21,25 +21,29 @@ class CategoryScreenViewModel @Inject constructor() : ViewModel() {
     fun toggleChoiceSelection(choice: CategoryItem) {
         if (_selectedChoices.value.contains(choice)) {
             _selectedChoices.value.remove(choice)
-            Log.i("X15","REMOVE + ENABLE")
             enableAllChoices()
         } else if (_selectedChoices.value.size <= 3) {
             _selectedChoices.value.add(choice)
-            Log.i("X15","ADD + DISABLE")
             if (_selectedChoices.value.size == 3) {
                 disableUnselectedChoices()
             }
         }
+        Log.i("X15",_selectedChoices.value.toString())
     }
 
     private fun enableAllChoices() {
-        _categories.value.forEach { it.isEnabled = true }
+        _categories.value = _categories.value.map { it.copy(isEnabled = true) }
     }
 
     private fun disableUnselectedChoices() {
-        _categories.value
-            .filterNot { _selectedChoices.value.contains(it) }
-            .forEach { it.isEnabled = false }
+        val selectedIds = _selectedChoices.value.map { it.id }
+        _categories.value = _categories.value.map {
+            if (selectedIds.contains(it.id)) {
+                it.copy(isEnabled = true)
+            } else {
+                it.copy(isEnabled = false)
+            }
+        }
     }
 }
 
