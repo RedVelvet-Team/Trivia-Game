@@ -7,7 +7,7 @@ data class CategoryUIState(
     val selectedChips: List<ChipItemUIState> = emptyList(),
 ) {
     val isMaxSelectionReached = selectedCategories.size == 3
-    val isStartButtonEnabled = selectedCategories.isNotEmpty()
+    val isStartButtonEnabled = selectedCategories.isNotEmpty() && selectedChips.isNotEmpty()
 
     data class CategoryItemUIState(
         val id: Int = 0,
