@@ -24,3 +24,10 @@ val LightGray = Color(0x99F6F6F6)
 val PrimaryColor = Color(0xF09850BD)
 val Red = Color(0xF0C83132)
 val Green = Color(0xF032925C)
+
+// New Colors that used in the category screen
+val Primary = Color(0xFF5C3570)
+val OnBackgroundLight = Color(0xFFEFEFEF)
+val MainTextLight = Color(0xE6212121)
+val SecondaryTextLight = Color(0x99212121)
+val DisabledButtonLight = Color(0xFFBFBFBF)

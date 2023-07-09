@@ -16,7 +16,6 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
@@ -27,7 +26,10 @@ import androidx.compose.ui.unit.sp
 import com.redvelvet.presentation.R
 import com.redvelvet.presentation.ui.screen.category.CategoryUIState
 import com.redvelvet.presentation.ui.spacer.SpacerVertical8
+import com.redvelvet.presentation.ui.theme.MainTextLight
+import com.redvelvet.presentation.ui.theme.OnBackgroundLight
 import com.redvelvet.presentation.ui.theme.Poppins
+import com.redvelvet.presentation.ui.theme.Primary
 
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -45,11 +47,11 @@ fun OneCategoryItem(
         shape = RoundedCornerShape(16.dp),
         border = if (item.selected && item.enabled) BorderStroke(
             2.dp,
-            Color(0xFF5C3570)
+            Primary
         ) else null,
         colors = CardDefaults.cardColors(
-            containerColor = Color(0xFFF1F1F1),
-            disabledContainerColor = Color(0xFFF1F1F1),
+            containerColor = OnBackgroundLight,
+            disabledContainerColor = OnBackgroundLight,
         ),
     ) {
         Column(
@@ -60,7 +62,7 @@ fun OneCategoryItem(
             Icon(
                 painter = painterResource(item.icon),
                 contentDescription = null,
-                tint = if (item.enabled) Color(0xFF5C3570) else Color(0x5C7B5C8B),
+                tint = if (item.enabled) Primary else Primary.copy(alpha = 0.36f),
                 modifier = Modifier.size(48.dp),
             )
             SpacerVertical8()
@@ -70,7 +72,7 @@ fun OneCategoryItem(
                 fontSize = 14.sp,
                 fontFamily = Poppins,
                 fontWeight = FontWeight.Medium,
-                color = if (item.enabled) Color(0xE6212121) else Color(0x5C212121),
+                color = if (item.enabled) MainTextLight else MainTextLight.copy(alpha = 0.36f),
                 textAlign = TextAlign.Center,
                 maxLines = 1
             )

@@ -7,12 +7,14 @@ import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.redvelvet.presentation.ui.theme.DisabledButtonLight
 import com.redvelvet.presentation.ui.theme.Poppins
+import com.redvelvet.presentation.ui.theme.Primary
+import com.redvelvet.presentation.ui.theme.White
 
 
 @Composable
@@ -28,8 +30,8 @@ fun CustomButton(
             .padding(bottom = 16.dp)
             .fillMaxWidth(),
         colors = ButtonDefaults.buttonColors(
-            containerColor = Color(0xFF7B5C8B),
-            disabledContainerColor = Color(0xFFBFBFBF),
+            containerColor = Primary,
+            disabledContainerColor = DisabledButtonLight,
         ),
         enabled = enabled,
     ) {
@@ -40,7 +42,7 @@ fun CustomButton(
             fontWeight = FontWeight.SemiBold,
             textAlign = TextAlign.Center,
             modifier = Modifier.padding(vertical = 12.dp),
-            color = Color(0xFFFFFFFF)
+            color = White,
         )
     }
 }

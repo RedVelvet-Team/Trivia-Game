@@ -9,11 +9,13 @@ import androidx.compose.material3.SuggestionChipDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.redvelvet.presentation.ui.theme.OnBackgroundLight
 import com.redvelvet.presentation.ui.theme.Poppins
+import com.redvelvet.presentation.ui.theme.Primary
+import com.redvelvet.presentation.ui.theme.White
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -42,13 +44,13 @@ fun Chip(
         elevation = null,
         border = SuggestionChipDefaults.suggestionChipBorder(
             borderWidth = 1.dp,
-            borderColor = Color(0xFF7B5C8B),
+            borderColor = Primary,
         ),
         enabled = true,
         shape = RoundedCornerShape(16.dp),
         colors = SuggestionChipDefaults.suggestionChipColors(
-            labelColor = if (selected) Color(0xFFFFFFFF) else Color(0xFF7B5C8B),
-            containerColor = if (selected) Color(0xFF7B5C8B) else Color(0xFFF1F1F1),
+            labelColor = if (selected) White else Primary,
+            containerColor = if (selected) Primary else OnBackgroundLight,
         ),
     )
 }

@@ -24,6 +24,7 @@ import com.redvelvet.presentation.ui.composable.CustomButton
 import com.redvelvet.presentation.ui.composable.TriviaAppBar
 import com.redvelvet.presentation.ui.spacer.SpacerVertical16
 import com.redvelvet.presentation.ui.spacer.SpacerVertical8
+import com.redvelvet.presentation.ui.theme.BackgroundLight
 
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -33,6 +34,7 @@ fun CategoryScreen(viewModel: CategoryScreenViewModel = hiltViewModel()) {
 
     Scaffold(
         topBar = { TriviaAppBar(title = stringResource(R.string.customize_your_questions)) },
+        containerColor = BackgroundLight,
     ) { paddingValues ->
         CategoryScreenContent(
             state,

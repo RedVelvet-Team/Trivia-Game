@@ -15,7 +15,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
@@ -23,7 +22,9 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.redvelvet.presentation.R
+import com.redvelvet.presentation.ui.theme.OnBackgroundLight
 import com.redvelvet.presentation.ui.theme.Poppins
+import com.redvelvet.presentation.ui.theme.SecondaryTextLight
 
 @Composable
 fun CategorySelectionInfo() {
@@ -31,7 +32,7 @@ fun CategorySelectionInfo() {
         modifier = Modifier
             .clip(RoundedCornerShape(16.dp))
             .fillMaxWidth()
-            .background(Color(0xFFF1F1F1))
+            .background(OnBackgroundLight)
             .padding(16.dp)
     ) {
         Row(
@@ -49,7 +50,7 @@ fun CategorySelectionInfo() {
                 fontSize = 10.sp,
                 fontFamily = Poppins,
                 fontWeight = FontWeight(400),
-                color = Color(0x99212121),
+                color = SecondaryTextLight,
                 maxLines = 3,
                 lineHeight = 15.sp,
             )
