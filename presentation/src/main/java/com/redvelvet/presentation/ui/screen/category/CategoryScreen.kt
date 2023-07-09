@@ -16,6 +16,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.NavController
 import com.redvelvet.presentation.R
 import com.redvelvet.presentation.ui.composable.CategoriesGrid
 import com.redvelvet.presentation.ui.composable.CategoryLevelChips
@@ -24,12 +25,16 @@ import com.redvelvet.presentation.ui.composable.CustomButton
 import com.redvelvet.presentation.ui.composable.TriviaAppBar
 import com.redvelvet.presentation.ui.screen.category.utils.SpaceVertical
 import com.redvelvet.presentation.ui.screen.category.utils.Utils
+import com.redvelvet.presentation.ui.screen.question.SCREEN_KEY_QUESTION_SCREEN
 import com.redvelvet.presentation.ui.theme.BackgroundLight
 
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun CategoryScreen(viewModel: CategoryScreenViewModel = hiltViewModel()) {
+fun CategoryScreen(
+    navController: NavController,
+    viewModel: CategoryScreenViewModel = hiltViewModel()) {
+
     val state by viewModel.state.collectAsState()
 
     Scaffold(
@@ -41,7 +46,9 @@ fun CategoryScreen(viewModel: CategoryScreenViewModel = hiltViewModel()) {
             paddingValues,
             viewModel::onCategoryItemClicked,
             viewModel::onChipItemClicked,
-        )
+        ){ chips,categories ->
+            navController.navigate("${SCREEN_KEY_QUESTION_SCREEN}/$chips/$categories")
+        }
     }
 }
 
@@ -51,6 +58,7 @@ fun CategoryScreenContent(
     paddingValues: PaddingValues,
     onCategoryItemClicked: (CategoryUIState.CategoryItemUIState) -> Unit,
     onChipItemClicked: (CategoryUIState.ChipItemUIState) -> Unit,
+    onStartClick: (String,String) -> Unit
 ) {
     Column(
         modifier = Modifier
@@ -67,7 +75,11 @@ fun CategoryScreenContent(
             CategoriesGrid(onCategoryItemClicked, categories = state.categories)
             CustomButton(
                 label = stringResource(R.string.start),
-                onClick = { },
+                onClick = {
+                    val selectedChips = state.selectedChips.joinToString(",")
+                    val selectedCategories = state.selectedCategories.joinToString(",")
+                    onStartClick(selectedChips,selectedCategories)
+                },
                 modifier = Modifier.align(Alignment.BottomCenter),
                 enabled = state.isStartButtonEnabled,
             )
@@ -79,5 +91,5 @@ fun CategoryScreenContent(
 @Preview(showBackground = true, showSystemUi = true)
 @Composable
 fun CategoryScreenPreview() {
-    CategoryScreen()
+    //CategoryScreen()
 }
