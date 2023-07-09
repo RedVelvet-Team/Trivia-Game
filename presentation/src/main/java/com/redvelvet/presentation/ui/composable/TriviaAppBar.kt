@@ -28,8 +28,9 @@ fun TriviaAppBar(
         title = {
             Text(
                 text = title,
-                fontSize = 16.sp,
+                fontSize = 18.sp,
                 fontFamily = Poppins,
+                lineHeight = 24.sp,
                 fontWeight = FontWeight(600),
                 color = Color(0xE5212121),
                 textAlign = TextAlign.Center,
