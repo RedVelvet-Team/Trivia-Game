@@ -25,6 +25,7 @@
     <string name="select_your_category">Select your Category</string>
     <string name="choose_category_description">Choose a maximum of 3 categories and start your trivia adventure now!</string>
     <string name="select_your_preferred_Categories">Select your preferred Categories</string>
+    <string name="out_of"> Out of </string>
     <string name="text_consolation">No worries! Let\'s try again and aim for success in the next round. Keep playing and enjoy the thrill of trivia</string>
     <string name="ellipsize_of_background">ellipsize of background</string>
     <string name="win_icon">win icon</string>
