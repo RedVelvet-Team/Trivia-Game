@@ -41,9 +41,9 @@ fun OneCategoryItem(
         modifier = Modifier
             .fillMaxWidth()
             .wrapContentHeight(),
-        enabled = item.isEnabled,
+        enabled = item.enabled,
         shape = RoundedCornerShape(16.dp),
-        border = if (item.isSelected && item.isEnabled) BorderStroke(
+        border = if (item.isSelected && item.enabled) BorderStroke(
             2.dp,
             Color(0xFF5C3570)
         ) else null,
@@ -60,7 +60,7 @@ fun OneCategoryItem(
             Icon(
                 painter = painterResource(item.icon),
                 contentDescription = null,
-                tint = if (item.isEnabled) Color(0xFF5C3570) else Color(0xFF7B5C8B),
+                tint = if (item.enabled) Color(0xFF5C3570) else Color(0x5C7B5C8B),
                 modifier = Modifier.size(48.dp),
             )
             SpacerVertical8()
@@ -70,7 +70,7 @@ fun OneCategoryItem(
                 fontSize = 14.sp,
                 fontFamily = Poppins,
                 fontWeight = FontWeight.Medium,
-                color = if (item.isEnabled) Color(0x99121212) else Color(0xE5212121),
+                color = if (item.enabled) Color(0xE6212121) else Color(0x5C212121),
                 textAlign = TextAlign.Center,
                 maxLines = 1
             )
@@ -87,7 +87,7 @@ fun CategoryItemPreview() {
             name = stringResource(id = R.string.arts_and_literature),
             icon = R.drawable.ic_film_projector_svgrepo,
             isSelected = false,
-            isEnabled = true
+            enabled = true
         )
     ) {}
 }

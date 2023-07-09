@@ -13,7 +13,7 @@ data class CategoryUIState(
         val id: Int = 0,
         val name: String = "",
         val icon: Int = 0,
-        val isEnabled: Boolean = true,
+        val enabled: Boolean = true,
         val isSelected: Boolean = false,
     )
 

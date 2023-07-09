@@ -51,7 +51,7 @@ class CategoryScreenViewModel @Inject constructor() : ViewModel() {
 
     private fun enableAllCategories() {
         _state.update { state ->
-            state.copy(categories = state.categories.map { it.copy(isEnabled = true) })
+            state.copy(categories = state.categories.map { it.copy(enabled = true) })
         }
     }
 
@@ -59,8 +59,8 @@ class CategoryScreenViewModel @Inject constructor() : ViewModel() {
         _state.update { state ->
             state.copy(
                 categories = state.categories.map {
-                    if (it.isSelected) it.copy(isEnabled = true)
-                    else it.copy(isEnabled = false)
+                    if (it.isSelected) it.copy(enabled = true)
+                    else it.copy(enabled = false)
                 }
             )
         }
