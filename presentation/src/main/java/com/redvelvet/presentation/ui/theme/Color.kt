@@ -25,6 +25,8 @@ val PrimaryColor = Color(0xF09850BD)
 val Red = Color(0xF0C83132)
 val Green = Color(0xF032925C)
 
+val ButtonColor = Color(0xFF5C3570)
+
 // New Colors that used in the category screen
 val Primary = Color(0xFF5C3570)
 val OnBackgroundLight = Color(0xFFEFEFEF)
