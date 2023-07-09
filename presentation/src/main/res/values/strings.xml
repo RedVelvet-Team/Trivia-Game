@@ -32,5 +32,11 @@
     <string name="_1450">1450</string>
     <string name="you_scored_an_impressive_10_out_of_10">"You scored an impressive 10 out of 10 "</string>
     <string name="keep_up_the_excellent_work">"        Keep up the excellent work and        \ncontinue to make progress in the level. Congratulations!\n"</string>
+    <string name="history">History</string>
+    <string name="level_difficulty">Level Difficulty</string>
+    <string name="questions_categories">Questions Categories</string>
+    <string name="category_max_selection">You can select the questions difficulties, and a maximum of 3 categories to start the game.</string>
+    <string name="customize_your_questions">Customize your questions</string>
+
 
 </resources>
