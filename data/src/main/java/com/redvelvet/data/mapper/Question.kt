@@ -12,6 +12,7 @@ fun QuestionDto.toDomain() = Question(
     type = type ?: ""
 )
 
-fun List<QuestionDto>.toDomain(): List<Question> {
+fun List<QuestionDto>.toDomain():List<Question>{
     return this.map { it.toDomain() }
 }
+
