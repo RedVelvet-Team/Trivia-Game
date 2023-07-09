@@ -23,7 +23,7 @@ fun CategoryLevelChips(
                 label = chip.name,
                 onClick = { onClicked(chip) },
                 modifier = Modifier.weight(1f),
-                selected = chip.isSelected,
+                selected = chip.selected,
             )
             Spacer(modifier = Modifier.width(8.dp))
         }

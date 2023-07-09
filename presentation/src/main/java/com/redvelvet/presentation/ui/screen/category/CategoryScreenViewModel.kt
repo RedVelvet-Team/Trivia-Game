@@ -26,7 +26,7 @@ class CategoryScreenViewModel @Inject constructor() : ViewModel() {
     }
 
     fun onCategoryItemClicked(category: CategoryUIState.CategoryItemUIState) {
-        if (category.isSelected) {
+        if (category.selected) {
             toggleCategorySelection(category)
             enableAllCategories()
         } else if (state.value.isMaxSelectionReached.not()) {
@@ -39,12 +39,12 @@ class CategoryScreenViewModel @Inject constructor() : ViewModel() {
         _state.update { state ->
             val updatedCategories = state.categories.map {
                 if (it.id == category.id) {
-                    it.copy(isSelected = !it.isSelected)
+                    it.copy(selected = !it.selected)
                 } else {
                     it
                 }
             }
-            val selectedCategories = updatedCategories.filter { it.isSelected }
+            val selectedCategories = updatedCategories.filter { it.selected }
             state.copy(categories = updatedCategories, selectedCategories = selectedCategories)
         }
     }
@@ -59,7 +59,7 @@ class CategoryScreenViewModel @Inject constructor() : ViewModel() {
         _state.update { state ->
             state.copy(
                 categories = state.categories.map {
-                    if (it.isSelected) it.copy(enabled = true)
+                    if (it.selected) it.copy(enabled = true)
                     else it.copy(enabled = false)
                 }
             )
@@ -70,12 +70,12 @@ class CategoryScreenViewModel @Inject constructor() : ViewModel() {
         _state.update { state ->
             val updatedChips = state.chips.map {
                 if (it.id == chip.id) {
-                    it.copy(isSelected = !it.isSelected)
+                    it.copy(selected = !it.selected)
                 } else {
                     it
                 }
             }
-            val selectedChips = updatedChips.filter { it.isSelected }
+            val selectedChips = updatedChips.filter { it.selected }
             state.copy(chips = updatedChips, selectedChips = selectedChips)
         }
     }

@@ -43,7 +43,7 @@ fun OneCategoryItem(
             .wrapContentHeight(),
         enabled = item.enabled,
         shape = RoundedCornerShape(16.dp),
-        border = if (item.isSelected && item.enabled) BorderStroke(
+        border = if (item.selected && item.enabled) BorderStroke(
             2.dp,
             Color(0xFF5C3570)
         ) else null,
@@ -86,7 +86,7 @@ fun CategoryItemPreview() {
             id = 1,
             name = stringResource(id = R.string.arts_and_literature),
             icon = R.drawable.ic_film_projector_svgrepo,
-            isSelected = false,
+            selected = false,
             enabled = true
         )
     ) {}

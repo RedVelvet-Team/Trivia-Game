@@ -14,12 +14,12 @@ data class CategoryUIState(
         val name: String = "",
         val icon: Int = 0,
         val enabled: Boolean = true,
-        val isSelected: Boolean = false,
+        val selected: Boolean = false,
     )
 
     data class ChipItemUIState(
         val id: Int = 0,
         val name: String = "",
-        val isSelected: Boolean = false,
+        val selected: Boolean = false,
     )
 }
