@@ -66,7 +66,8 @@ fun CategoryScreenContent(
             CustomButton(
                 label = stringResource(R.string.start),
                 onClick = { },
-                modifier = Modifier.align(Alignment.BottomCenter)
+                modifier = Modifier.align(Alignment.BottomCenter),
+                enabled = state.isStartButtonEnabled,
             )
         }
     }
