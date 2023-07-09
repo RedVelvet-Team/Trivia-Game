@@ -15,10 +15,15 @@ class CategoryScreenViewModel @Inject constructor() : ViewModel() {
 
     init {
         getCategories()
+        getChips()
     }
 
     private fun getCategories() {
         _state.update { it.copy(categories = CategoryFactory().newCategories) }
+    }
+
+    private fun getChips() {
+        _state.update { it.copy(chips = CategoryFactory().newChips) }
     }
 
     fun onCategoryItemClicked(category: CategoryUIState.CategoryItemUIState) {
@@ -62,51 +67,66 @@ class CategoryScreenViewModel @Inject constructor() : ViewModel() {
         }
     }
 
+    fun onChipItemClicked(chip: CategoryUIState.ChipItemUIState) {
+        Log.d("ChipItemClicked", chip.toString())
+        _state.update { state ->
+            val updatedChips = state.chips.map {
+                if (it.id == chip.id) {
+                    it.copy(isSelected = !it.isSelected)
+                } else {
+                    it
+                }
+            }
+            val selectedChips = updatedChips.filter { it.isSelected }
+            state.copy(chips = updatedChips, selectedChips = selectedChips)
+        }
+    }
+
     /*
     * Old Implementation
     * */
 
-    private val _selectedChoices: MutableStateFlow<MutableList<CategoryItem>> =
-        MutableStateFlow(mutableListOf())
-    val selectedChoices = _selectedChoices.asStateFlow()
+//    private val _selectedChoices: MutableStateFlow<MutableList<CategoryItem>> =
+//        MutableStateFlow(mutableListOf())
+//    val selectedChoices = _selectedChoices.asStateFlow()
+//
+//    private val _categories: MutableStateFlow<List<CategoryItem>> =
+//        MutableStateFlow(CategoryFactory().categories)
+//    val categories = _categories.asStateFlow()
+//
+//    private val _selectedLevelIndex: MutableStateFlow<Int> = MutableStateFlow(0)
+//    val selectedLevelIndex = _selectedLevelIndex.asStateFlow()
 
-    private val _categories: MutableStateFlow<List<CategoryItem>> =
-        MutableStateFlow(CategoryFactory().categories)
-    val categories = _categories.asStateFlow()
+//    fun selectLevelChip(index: Int) {
+//        _selectedLevelIndex.value = index
+//    }
 
-    private val _selectedLevelIndex: MutableStateFlow<Int> = MutableStateFlow(0)
-    val selectedLevelIndex = _selectedLevelIndex.asStateFlow()
+//    fun toggleChoiceSelection(choice: CategoryItem) {
+//        if (_selectedChoices.value.contains(choice)) {
+//            _selectedChoices.value.remove(choice)
+//            enableAllChoices()
+//        } else if (_selectedChoices.value.size <= 3) {
+//            _selectedChoices.value.add(choice)
+//            if (_selectedChoices.value.size == 3) {
+//                disableUnselectedChoices()
+//            }
+//        }
+//        Log.i("X15", _selectedChoices.value.toString())
+//    }
 
-    fun selectLevelChip(index: Int) {
-        _selectedLevelIndex.value = index
-    }
+//    private fun enableAllChoices() {
+//        _categories.value = _categories.value.map { it.copy(isEnabled = true) }
+//    }
 
-    fun toggleChoiceSelection(choice: CategoryItem) {
-        if (_selectedChoices.value.contains(choice)) {
-            _selectedChoices.value.remove(choice)
-            enableAllChoices()
-        } else if (_selectedChoices.value.size <= 3) {
-            _selectedChoices.value.add(choice)
-            if (_selectedChoices.value.size == 3) {
-                disableUnselectedChoices()
-            }
-        }
-        Log.i("X15", _selectedChoices.value.toString())
-    }
-
-    private fun enableAllChoices() {
-        _categories.value = _categories.value.map { it.copy(isEnabled = true) }
-    }
-
-    private fun disableUnselectedChoices() {
-        val selectedIds = _selectedChoices.value.map { it.id }
-        _categories.value = _categories.value.map {
-            if (selectedIds.contains(it.id)) {
-                it.copy(isEnabled = true)
-            } else {
-                it.copy(isEnabled = false)
-            }
-        }
-    }
+//    private fun disableUnselectedChoices() {
+//        val selectedIds = _selectedChoices.value.map { it.id }
+//        _categories.value = _categories.value.map {
+//            if (selectedIds.contains(it.id)) {
+//                it.copy(isEnabled = true)
+//            } else {
+//                it.copy(isEnabled = false)
+//            }
+//        }
+//    }
 }
 

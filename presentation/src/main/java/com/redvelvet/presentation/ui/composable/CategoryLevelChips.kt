@@ -6,27 +6,24 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.width
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
-import com.redvelvet.presentation.R
+import com.redvelvet.presentation.ui.screen.category.CategoryUIState
 
 @Composable
-fun CategoryLevelChips() {
-    val chips = listOf(
-        stringResource(R.string.easy),
-        stringResource(R.string.medium),
-        stringResource(R.string.difficult),
-    )
+fun CategoryLevelChips(
+    chips: List<CategoryUIState.ChipItemUIState>,
+    onClicked: (CategoryUIState.ChipItemUIState) -> Unit,
+) {
 
     Row(
         modifier = Modifier.fillMaxWidth(),
     ) {
-        chips.forEachIndexed { index, label ->
+        chips.forEach { chip ->
             Chip(
-                label = label,
-                onClick = {},
-                enabled = index == 0,
-                modifier = Modifier.weight(1f)
+                label = chip.name,
+                onClick = { onClicked(chip) },
+                modifier = Modifier.weight(1f),
+                selected = chip.isSelected,
             )
             Spacer(modifier = Modifier.width(8.dp))
         }

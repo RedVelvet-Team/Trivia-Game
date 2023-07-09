@@ -37,7 +37,8 @@ fun CategoryScreen(viewModel: CategoryScreenViewModel = hiltViewModel()) {
         CategoryScreenContent(
             state,
             paddingValues,
-            viewModel::onCategoryItemClicked
+            viewModel::onCategoryItemClicked,
+            viewModel::onChipItemClicked,
         )
     }
 }
@@ -47,6 +48,7 @@ fun CategoryScreenContent(
     state: CategoryUIState,
     paddingValues: PaddingValues,
     onCategoryItemClicked: (CategoryUIState.CategoryItemUIState) -> Unit,
+    onChipItemClicked: (CategoryUIState.ChipItemUIState) -> Unit,
 ) {
     Column(
         modifier = Modifier
@@ -57,7 +59,7 @@ fun CategoryScreenContent(
         SpacerVertical8()
         CategorySelectionInfo()
         SpacerVertical16()
-        CategoryLevelChips()
+        CategoryLevelChips(state.chips, onChipItemClicked)
         SpacerVertical16()
         Box {
             CategoriesGrid(onCategoryItemClicked, categories = state.categories)

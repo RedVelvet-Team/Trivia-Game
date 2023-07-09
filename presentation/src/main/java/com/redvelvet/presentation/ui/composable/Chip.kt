@@ -21,7 +21,7 @@ fun Chip(
     label: String,
     modifier: Modifier = Modifier,
     onClick: () -> Unit,
-    enabled: Boolean = false,
+    selected: Boolean,
 ) {
     SuggestionChip(
         onClick = onClick,
@@ -43,15 +43,12 @@ fun Chip(
         border = SuggestionChipDefaults.suggestionChipBorder(
             borderWidth = 1.dp,
             borderColor = Color(0xFF7B5C8B),
-            disabledBorderColor = Color(0xFF7B5C8B),
         ),
-        enabled = enabled,
+        enabled = true,
         shape = RoundedCornerShape(16.dp),
         colors = SuggestionChipDefaults.suggestionChipColors(
-            labelColor = Color(0xFFFFFFFF),
-            containerColor = Color(0xFF7B5C8B),
-            disabledLabelColor = Color(0xFF7B5C8B),
-            disabledContainerColor = Color(0xFFF1F1F1)
+            labelColor = if (selected) Color(0xFFFFFFFF) else Color(0xFF7B5C8B),
+            containerColor = if (selected) Color(0xFF7B5C8B) else Color(0xFFF1F1F1),
         ),
     )
 }
