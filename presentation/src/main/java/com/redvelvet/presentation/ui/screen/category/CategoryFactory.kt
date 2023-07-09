@@ -42,7 +42,7 @@ class CategoryFactory {
             9, "Food and Drink", R.drawable.ic_food
         ),
         CategoryUIState.CategoryItemUIState(
-            0,
+            10,
             "General Knowledge",
             R.drawable.ic_head_svgrepo_com_1
         ),
