@@ -25,7 +25,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.redvelvet.presentation.R
 import com.redvelvet.presentation.ui.screen.category.CategoryUIState
-import com.redvelvet.presentation.ui.spacer.SpacerVertical8
+import com.redvelvet.presentation.ui.screen.category.utils.SpaceVertical
+import com.redvelvet.presentation.ui.screen.category.utils.Utils
 import com.redvelvet.presentation.ui.theme.MainTextLight
 import com.redvelvet.presentation.ui.theme.OnBackgroundLight
 import com.redvelvet.presentation.ui.theme.Poppins
@@ -65,7 +66,7 @@ fun OneCategoryItem(
                 tint = if (item.enabled) Primary else Primary.copy(alpha = 0.36f),
                 modifier = Modifier.size(48.dp),
             )
-            SpacerVertical8()
+            SpaceVertical(Utils.SPACE_8)
             Text(
                 text = item.name,
                 modifier = Modifier.fillMaxWidth(),

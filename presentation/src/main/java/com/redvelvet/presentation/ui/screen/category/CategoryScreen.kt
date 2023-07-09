@@ -22,8 +22,8 @@ import com.redvelvet.presentation.ui.composable.CategoryLevelChips
 import com.redvelvet.presentation.ui.composable.CategorySelectionInfo
 import com.redvelvet.presentation.ui.composable.CustomButton
 import com.redvelvet.presentation.ui.composable.TriviaAppBar
-import com.redvelvet.presentation.ui.spacer.SpacerVertical16
-import com.redvelvet.presentation.ui.spacer.SpacerVertical8
+import com.redvelvet.presentation.ui.screen.category.utils.SpaceVertical
+import com.redvelvet.presentation.ui.screen.category.utils.Utils
 import com.redvelvet.presentation.ui.theme.BackgroundLight
 
 
@@ -58,11 +58,11 @@ fun CategoryScreenContent(
             .padding(horizontal = 16.dp)
             .padding(paddingValues)
     ) {
-        SpacerVertical8()
+        SpaceVertical(Utils.SPACE_8)
         CategorySelectionInfo()
-        SpacerVertical16()
+        SpaceVertical(Utils.SPACE_16)
         CategoryLevelChips(state.chips, onChipItemClicked)
-        SpacerVertical16()
+        SpaceVertical(Utils.SPACE_16)
         Box {
             CategoriesGrid(onCategoryItemClicked, categories = state.categories)
             CustomButton(

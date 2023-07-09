@@ -8,8 +8,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 
-class Utils(){
-    companion object{
+class Utils() {
+    companion object {
         val SPACE_1 = 1.dp
         val SPACE_2 = 2.dp
         val SPACE_4 = 4.dp
@@ -22,11 +22,13 @@ class Utils(){
         val SPACE_64 = 64.dp
     }
 }
+
 @Composable
-fun SpaceVertical(dp: Dp){
+fun SpaceVertical(dp: Dp) {
     Spacer(modifier = Modifier.height(dp))
 }
+
 @Composable
-fun SpaceHorizontal(dp: Dp){
+fun SpaceHorizontal(dp: Dp) {
     Spacer(modifier = Modifier.width(dp))
 }
