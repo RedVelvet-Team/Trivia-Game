@@ -1,14 +1,18 @@
 package com.redvelvet.presentation.ui.screen.category
 
 import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
@@ -33,8 +37,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.redvelvet.presentation.R
-import com.redvelvet.presentation.ui.composable.CategoryLevelChips
 import com.redvelvet.presentation.ui.composable.CategorySelectionInfo
+import com.redvelvet.presentation.ui.composable.Chip
 import com.redvelvet.presentation.ui.composable.CustomButton
 import com.redvelvet.presentation.ui.composable.TriviaAppBar
 import com.redvelvet.presentation.ui.spacer.SpacerVertical16
@@ -46,11 +50,18 @@ import com.redvelvet.presentation.ui.theme.Poppins
 @Composable
 fun TestCategoryScreen(viewModel: CategoryScreenViewModel = hiltViewModel()) {
     val list = viewModel.categories.collectAsState().value
+    val selectedLevelIndex = viewModel.selectedLevelIndex.collectAsState().value
+    val selectedChoice = viewModel.selectedChoices.collectAsState().value.toList()
     Scaffold(
         topBar = { TriviaAppBar(title = stringResource(R.string.customize_your_questions)) },
     ) { paddingValues ->
-        TestCategoryScreenContent(list,paddingValues,
-            viewModel::toggleChoiceSelection)
+        TestCategoryScreenContent(
+            list,
+            paddingValues,
+            selectedChoice,
+            viewModel::toggleChoiceSelection,
+            selectedLevelIndex,
+            viewModel::selectLevelChip)
     }
 }
 
@@ -58,7 +69,10 @@ fun TestCategoryScreen(viewModel: CategoryScreenViewModel = hiltViewModel()) {
 fun TestCategoryScreenContent(
     list: List<CategoryItem>,
     paddingValues: PaddingValues,
+    selected: List<CategoryItem>,
     selectItem: (CategoryItem) -> Unit,
+    selectedLevelIndex: Int,
+    onSelect: (Int) -> Unit
 ) {
     Column(
         modifier = Modifier
@@ -69,10 +83,10 @@ fun TestCategoryScreenContent(
         SpacerVertical8()
         CategorySelectionInfo()
         SpacerVertical16()
-        CategoryLevelChips()
+        TestCategoryLevelChips(selectedLevelIndex,onSelect)
         SpacerVertical16()
         Box {
-            TestCategoriesGrid(selectItem,categories = list)
+            TestCategoriesGrid(selectItem,categories = list,selected)
             CustomButton(
                 label = stringResource(R.string.start),
                 onClick = { },
@@ -83,7 +97,7 @@ fun TestCategoryScreenContent(
 }
 @Composable
 fun TestCategoriesGrid(selectItem:(CategoryItem) -> Unit,
-                   categories: List<CategoryItem>,
+                   categories: List<CategoryItem>,selected: List<CategoryItem>,
 ) {
     LazyVerticalGrid(
         columns = GridCells.Fixed(2),
@@ -95,7 +109,7 @@ fun TestCategoriesGrid(selectItem:(CategoryItem) -> Unit,
         content = {
             items(categories.size) { index ->
                 val category = categories[index]
-                TestOneCategoryItem(item = category, select = selectItem)
+                TestOneCategoryItem(item = category, select = selectItem,selected)
             }
         },
     )
@@ -106,6 +120,7 @@ fun TestCategoriesGrid(selectItem:(CategoryItem) -> Unit,
 fun TestOneCategoryItem(
     item: CategoryItem,
     select:(CategoryItem) -> Unit,
+    selected: List<CategoryItem>,
 ) {
     Card(
         onClick = {select.invoke(item)},
@@ -114,10 +129,16 @@ fun TestOneCategoryItem(
             .wrapContentHeight(),
         enabled = item.isEnabled,
         shape = RoundedCornerShape(16.dp),
-        border = if (item.isSelected) BorderStroke(2.dp, Color(0xFF5C3570)) else null,
-        colors = CardDefaults.cardColors(
+        border = if(selected.contains(item) && item.isEnabled)
+        {
+            BorderStroke(2.dp, Color(0xFF0A515C))
+                 } else {
+                     null
+                        },
+        colors = CardDefaults.cardColors
+            (
             containerColor = Color(0xFFF1F1F1),
-            disabledContainerColor = Color(0xFFF1F1F1),
+            disabledContainerColor = Color(0xFF9D9D9D),
         ),
     ) {
         Column(
@@ -128,7 +149,7 @@ fun TestOneCategoryItem(
             Icon(
                 painter = painterResource(item.icon),
                 contentDescription = null,
-                tint = if (item.isEnabled) Color(0xFF2A7BFF) else Color(0xFF5C4C64),
+                tint = if (item.isSelected) Color(0xFF2A7BFF) else Color(0xFF5C4C64),
                 modifier = Modifier.size(48.dp),
             )
             SpacerVertical8()
@@ -145,6 +166,31 @@ fun TestOneCategoryItem(
         }
     }
 }
+
+@Composable
+fun TestCategoryLevelChips(
+    index: Int,
+    onSelect:(Int)->Unit
+) {
+    val chips = listOf(
+        stringResource(R.string.easy),
+        stringResource(R.string.medium),
+        stringResource(R.string.difficult),
+    )
+
+    Row(modifier = Modifier.fillMaxWidth()) {
+        chips.forEachIndexed { i, label ->
+            Chip(
+                label = label,
+                onClick = { onSelect.invoke(i) },
+                enabled = true,
+                modifier = Modifier.weight(1f)
+            )
+            Spacer(modifier = Modifier.width(8.dp))
+        }
+    }
+}
+
 
 
 @Preview(showBackground = true, showSystemUi = true)

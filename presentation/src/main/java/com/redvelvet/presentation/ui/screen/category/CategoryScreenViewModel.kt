@@ -18,6 +18,13 @@ class CategoryScreenViewModel @Inject constructor() : ViewModel() {
         MutableStateFlow(CategoryFactory().categories)
     val categories = _categories.asStateFlow()
 
+    private val _selectedLevelIndex: MutableStateFlow<Int> = MutableStateFlow(0)
+    val selectedLevelIndex = _selectedLevelIndex.asStateFlow()
+
+    fun selectLevelChip(index: Int) {
+        _selectedLevelIndex.value = index
+    }
+
     fun toggleChoiceSelection(choice: CategoryItem) {
         if (_selectedChoices.value.contains(choice)) {
             _selectedChoices.value.remove(choice)
