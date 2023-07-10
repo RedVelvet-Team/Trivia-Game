@@ -17,23 +17,23 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
-import com.redvelvet.presentation.R
-import com.redvelvet.presentation.ui.composable.CategoriesGrid
-import com.redvelvet.presentation.ui.composable.CategoryLevelChips
-import com.redvelvet.presentation.ui.composable.CategorySelectionInfo
-import com.redvelvet.presentation.ui.composable.CustomButton
-import com.redvelvet.presentation.ui.composable.TriviaAppBar
-import com.redvelvet.presentation.ui.screen.category.utils.SpaceVertical
-import com.redvelvet.presentation.ui.screen.category.utils.Utils
-import com.redvelvet.presentation.ui.screen.question.SCREEN_KEY_QUESTION_SCREEN
-import com.redvelvet.presentation.ui.theme.BackgroundLight
+import com.redvelvet.trivia_game.R
+import com.redvelvet.trivia_game.presentation.ui.composable.CategoriesGrid
+import com.redvelvet.trivia_game.presentation.ui.composable.CategoryLevelChips
+import com.redvelvet.trivia_game.presentation.ui.composable.CategorySelectionInfo
+import com.redvelvet.trivia_game.presentation.ui.composable.CustomButton
+import com.redvelvet.trivia_game.presentation.ui.composable.TriviaAppBar
+import com.redvelvet.trivia_game.presentation.ui.screen.category.utils.SpaceVertical
+import com.redvelvet.trivia_game.presentation.ui.screen.category.utils.Utils
+import com.redvelvet.trivia_game.presentation.ui.screen.question.SCREEN_KEY_QUESTION_SCREEN
+import com.redvelvet.trivia_game.presentation.ui.theme.BackgroundLight
 
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun CategoryScreen(
-    navController: NavController,
-    viewModel: CategoryScreenViewModel = hiltViewModel()) {
+    navController: NavController, viewModel: CategoryScreenViewModel = hiltViewModel()
+) {
 
     val state by viewModel.state.collectAsState()
 
@@ -46,7 +46,7 @@ fun CategoryScreen(
             paddingValues,
             viewModel::onCategoryItemClicked,
             viewModel::onChipItemClicked,
-        ){ chips,categories ->
+        ) { chips, categories ->
             navController.navigate("${SCREEN_KEY_QUESTION_SCREEN}/$chips/$categories")
         }
     }
@@ -58,13 +58,10 @@ fun CategoryScreenContent(
     paddingValues: PaddingValues,
     onCategoryItemClicked: (CategoryUIState.CategoryItemUIState) -> Unit,
     onChipItemClicked: (CategoryUIState.ChipItemUIState) -> Unit,
-    onStartClick: (String,String) -> Unit
+    onStartClick: (String, String) -> Unit
 ) {
     Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .padding(horizontal = 16.dp)
-            .padding(paddingValues)
+        modifier = Modifier.fillMaxSize().padding(horizontal = 16.dp).padding(paddingValues)
     ) {
         SpaceVertical(Utils.SPACE_8)
         CategorySelectionInfo()
@@ -78,7 +75,7 @@ fun CategoryScreenContent(
                 onClick = {
                     val selectedChips = state.selectedChips.joinToString(",")
                     val selectedCategories = state.selectedCategories.joinToString(",")
-                    onStartClick(selectedChips,selectedCategories)
+                    onStartClick(selectedChips, selectedCategories)
                 },
                 modifier = Modifier.align(Alignment.BottomCenter),
                 enabled = state.isStartButtonEnabled,

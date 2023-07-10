@@ -24,9 +24,9 @@ import com.airbnb.lottie.compose.LottieAnimation
 import com.airbnb.lottie.compose.LottieCompositionSpec
 import com.airbnb.lottie.compose.animateLottieCompositionAsState
 import com.airbnb.lottie.compose.rememberLottieComposition
-import com.redvelvet.presentation.R
-import com.redvelvet.presentation.ui.theme.Poppins
-import com.redvelvet.presentation.ui.theme.White
+import com.redvelvet.trivia_game.R
+import com.redvelvet.trivia_game.presentation.ui.theme.Poppins
+import com.redvelvet.trivia_game.presentation.ui.theme.White
 
 
 @Composable

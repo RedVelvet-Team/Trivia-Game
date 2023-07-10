@@ -16,8 +16,8 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.redvelvet.presentation.R
-import com.redvelvet.presentation.ui.theme.Poppins
+import com.redvelvet.trivia_game.R
+import com.redvelvet.trivia_game.presentation.ui.theme.Poppins
 
 @OptIn(ExperimentalMaterial3Api::class)
 

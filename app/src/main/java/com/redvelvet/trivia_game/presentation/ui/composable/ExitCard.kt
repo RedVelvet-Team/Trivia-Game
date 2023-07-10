@@ -25,13 +25,13 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.redvelvet.presentation.R
-import com.redvelvet.presentation.ui.theme.BackgroundLight
-import com.redvelvet.presentation.ui.theme.Black
-import com.redvelvet.presentation.ui.theme.DarkGray
-import com.redvelvet.presentation.ui.theme.LightGray
-import com.redvelvet.presentation.ui.theme.Poppins
-import com.redvelvet.presentation.ui.theme.PrimaryColor
+import com.redvelvet.trivia_game.R
+import com.redvelvet.trivia_game.presentation.ui.theme.BackgroundLight
+import com.redvelvet.trivia_game.presentation.ui.theme.Black
+import com.redvelvet.trivia_game.presentation.ui.theme.DarkGray
+import com.redvelvet.trivia_game.presentation.ui.theme.LightGray
+import com.redvelvet.trivia_game.presentation.ui.theme.Poppins
+import com.redvelvet.trivia_game.presentation.ui.theme.PrimaryColor
 
 @Composable
 fun ExitCard() {

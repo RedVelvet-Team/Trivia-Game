@@ -1,6 +1,7 @@
 package com.redvelvet.trivia_game.presentation.ui.screen.category
 
-import com.redvelvet.presentation.R
+import com.redvelvet.trivia_game.R
+
 
 class CategoryFactory {
     val newCategories = listOf(

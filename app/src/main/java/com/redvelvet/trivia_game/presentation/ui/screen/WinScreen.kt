@@ -21,14 +21,15 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.redvelvet.presentation.R
-import com.redvelvet.presentation.ui.composable.ImageWin
-import com.redvelvet.presentation.ui.composable.VerticalSpacer
-import com.redvelvet.presentation.ui.composable.WinText14Sp
-import com.redvelvet.presentation.ui.composable.WinText20Sp
-import com.redvelvet.presentation.ui.theme.BackgroundLight
-import com.redvelvet.presentation.ui.theme.DarkGray
-import com.redvelvet.presentation.ui.theme.Poppins
+import com.redvelvet.trivia_game.R
+import com.redvelvet.trivia_game.presentation.ui.composable.ImageWin
+import com.redvelvet.trivia_game.presentation.ui.composable.VerticalSpacer
+import com.redvelvet.trivia_game.presentation.ui.composable.WinText14Sp
+import com.redvelvet.trivia_game.presentation.ui.composable.WinText20Sp
+import com.redvelvet.trivia_game.presentation.ui.theme.BackgroundLight
+import com.redvelvet.trivia_game.presentation.ui.theme.DarkGray
+import com.redvelvet.trivia_game.presentation.ui.theme.Poppins
+
 
 @Composable
 fun WinScreen() {
@@ -103,6 +104,6 @@ fun WinScreen() {
 
 @Preview(widthDp = 360, heightDp = 800)
 @Composable
-fun previewWin() {
+fun PreviewWin() {
     WinScreen()
 }

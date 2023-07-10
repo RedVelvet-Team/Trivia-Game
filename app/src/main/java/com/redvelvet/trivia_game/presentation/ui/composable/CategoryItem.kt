@@ -23,14 +23,14 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.redvelvet.presentation.R
-import com.redvelvet.presentation.ui.screen.category.CategoryUIState
-import com.redvelvet.presentation.ui.screen.category.utils.SpaceVertical
-import com.redvelvet.presentation.ui.screen.category.utils.Utils
-import com.redvelvet.presentation.ui.theme.MainTextLight
-import com.redvelvet.presentation.ui.theme.OnBackgroundLight
-import com.redvelvet.presentation.ui.theme.Poppins
-import com.redvelvet.presentation.ui.theme.Primary
+import com.redvelvet.trivia_game.R
+import com.redvelvet.trivia_game.presentation.ui.screen.category.CategoryUIState
+import com.redvelvet.trivia_game.presentation.ui.screen.category.utils.SpaceVertical
+import com.redvelvet.trivia_game.presentation.ui.screen.category.utils.Utils
+import com.redvelvet.trivia_game.presentation.ui.theme.MainTextLight
+import com.redvelvet.trivia_game.presentation.ui.theme.OnBackgroundLight
+import com.redvelvet.trivia_game.presentation.ui.theme.Poppins
+import com.redvelvet.trivia_game.presentation.ui.theme.Primary
 
 
 @OptIn(ExperimentalMaterial3Api::class)

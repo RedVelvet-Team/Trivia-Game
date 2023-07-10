@@ -11,10 +11,10 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.redvelvet.presentation.ui.theme.DisabledButtonLight
-import com.redvelvet.presentation.ui.theme.Poppins
-import com.redvelvet.presentation.ui.theme.Primary
-import com.redvelvet.presentation.ui.theme.White
+import com.redvelvet.trivia_game.presentation.ui.theme.DisabledButtonLight
+import com.redvelvet.trivia_game.presentation.ui.theme.Poppins
+import com.redvelvet.trivia_game.presentation.ui.theme.Primary
+import com.redvelvet.trivia_game.presentation.ui.theme.White
 
 
 @Composable

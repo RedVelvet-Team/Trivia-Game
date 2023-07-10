@@ -10,7 +10,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -22,19 +21,21 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.redvelvet.presentation.R
-import com.redvelvet.presentation.ui.composable.QuestionAppBar
-import com.redvelvet.presentation.ui.composable.QuestionChoices
-import com.redvelvet.presentation.ui.composable.QuestionNumberText
-import com.redvelvet.presentation.ui.composable.SpaceVertical
-import com.redvelvet.presentation.ui.theme.Poppins
+import com.redvelvet.trivia_game.R
+import com.redvelvet.trivia_game.presentation.ui.composable.QuestionAppBar
+import com.redvelvet.trivia_game.presentation.ui.composable.QuestionChoices
+import com.redvelvet.trivia_game.presentation.ui.composable.QuestionNumberText
+import com.redvelvet.trivia_game.presentation.ui.screen.category.utils.SpaceVertical
+import com.redvelvet.trivia_game.presentation.ui.screen.category.utils.Utils
+import com.redvelvet.trivia_game.presentation.ui.theme.Poppins
+
 
 @Composable
 fun QuestionScreen() {
     QuestionContent()
 }
 
-@OptIn(ExperimentalMaterial3Api::class)
+
 @Composable
 fun QuestionContent() {
 
@@ -52,7 +53,7 @@ fun QuestionContent() {
                 .background(Color(0xFFD9D9D9))
         )
 
-        SpaceVertical(space = 56)
+        SpaceVertical(Utils.SPACE_56)
 
         Column(
             modifier = Modifier
@@ -65,14 +66,16 @@ fun QuestionContent() {
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            SpaceVertical(space = 32)
+
+            SpaceVertical(Utils.SPACE_32)
+
             Row {
                 QuestionNumberText(text = "8")
                 QuestionNumberText(text = " ${stringResource(R.string.out_of)} ")
                 QuestionNumberText(text = "10")
             }
 
-            SpaceVertical(space = 16)
+            SpaceVertical(Utils.SPACE_16)
 
             Text(
                 text = "Who is the all-time leading goal scorer in the history of the UEFA Champions League?",
@@ -82,7 +85,8 @@ fun QuestionContent() {
                 fontWeight = FontWeight.SemiBold,
                 modifier = Modifier.padding(horizontal = 16.dp)
             )
-            SpaceVertical(space = 56)
+            SpaceVertical(Utils.SPACE_56)
+
             QuestionChoices(text = "Lionel Messi", spacer = 16)
             QuestionChoices(text = "Lionel Messi", spacer = 16)
             QuestionChoices(text = "Robert Lewandowski", spacer = 16)
@@ -93,6 +97,6 @@ fun QuestionContent() {
 
 @Preview(showSystemUi = true, showBackground = true)
 @Composable
-fun previewQuestionScreen() {
+fun PreviewQuestionScreen() {
     QuestionScreen()
 }

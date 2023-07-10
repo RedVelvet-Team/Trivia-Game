@@ -9,19 +9,19 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.redvelvet.presentation.ui.composable.BackgroundColor
-import com.redvelvet.presentation.ui.composable.LoseImage
-import com.redvelvet.presentation.ui.composable.PlayAgainButton
-import com.redvelvet.presentation.ui.composable.Rate
-import com.redvelvet.presentation.ui.composable.TextConsolation
-import com.redvelvet.presentation.ui.composable.TextResult
+import com.redvelvet.trivia_game.presentation.ui.composable.ItemBackgroundColor
+import com.redvelvet.trivia_game.presentation.ui.composable.LoseImage
+import com.redvelvet.trivia_game.presentation.ui.composable.PlayAgainButton
+import com.redvelvet.trivia_game.presentation.ui.composable.Rate
+import com.redvelvet.trivia_game.presentation.ui.composable.TextConsolation
+import com.redvelvet.trivia_game.presentation.ui.composable.TextResult
 
 
 @Composable
 fun LoseScreen() {
 
     Box(modifier = Modifier.fillMaxHeight()) {
-        BackgroundColor()
+        ItemBackgroundColor()
         Column(
             modifier = Modifier
                 .fillMaxSize()

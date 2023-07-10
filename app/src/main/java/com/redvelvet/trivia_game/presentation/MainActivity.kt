@@ -4,7 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.navigation.compose.rememberNavController
-import com.redvelvet.presentation.ui.navigation.TriviaNavGraph
+import com.redvelvet.trivia_game.presentation.ui.navigation.TriviaNavGraph
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

@@ -19,6 +19,7 @@ class Utils() {
         val SPACE_24 = 24.dp
         val SPACE_32 = 32.dp
         val SPACE_48 = 48.dp
+        val SPACE_56 = 56.dp
         val SPACE_64 = 64.dp
     }
 }

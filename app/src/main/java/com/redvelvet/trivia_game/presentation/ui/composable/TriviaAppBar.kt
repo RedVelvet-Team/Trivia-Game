@@ -14,10 +14,10 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.redvelvet.presentation.R
-import com.redvelvet.presentation.ui.theme.BackgroundLight
-import com.redvelvet.presentation.ui.theme.MainTextLight
-import com.redvelvet.presentation.ui.theme.Poppins
+import com.redvelvet.trivia_game.R
+import com.redvelvet.trivia_game.presentation.ui.theme.BackgroundLight
+import com.redvelvet.trivia_game.presentation.ui.theme.MainTextLight
+import com.redvelvet.trivia_game.presentation.ui.theme.Poppins
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

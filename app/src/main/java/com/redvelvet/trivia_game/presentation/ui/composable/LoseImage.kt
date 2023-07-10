@@ -10,7 +10,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.redvelvet.presentation.R
+import com.redvelvet.trivia_game.R
+
 
 @Composable
 fun LoseImage() {

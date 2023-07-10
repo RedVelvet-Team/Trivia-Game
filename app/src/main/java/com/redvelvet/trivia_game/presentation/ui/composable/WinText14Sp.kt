@@ -9,8 +9,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.sp
-import com.redvelvet.presentation.R
-import com.redvelvet.presentation.ui.theme.Poppins
+import com.redvelvet.trivia_game.presentation.ui.theme.Poppins
 
 @Composable
 fun WinText14Sp(
