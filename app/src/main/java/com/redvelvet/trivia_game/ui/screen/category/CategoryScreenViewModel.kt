@@ -22,7 +22,7 @@ class CategoryScreenViewModel @Inject constructor() : ViewModel() {
     }
 
     private fun getChips() {
-        _state.update { it.copy(chips = CategoryFactory().newChips) }
+        _state.update { it.copy(chips = CategoryFactory().newChips) }.also { selectedFirstChip() }
     }
 
     fun onCategoryItemClicked(category: CategoryUIState.CategoryItemUIState) {
@@ -79,5 +79,9 @@ class CategoryScreenViewModel @Inject constructor() : ViewModel() {
             state.copy(chips = updatedChips, selectedChips = selectedChips)
         }
     }
-}
 
+    private fun selectedFirstChip() {
+        val chips = state.value.chips
+        if (chips.isNotEmpty()) onChipItemClicked(chips[0])
+    }
+}
