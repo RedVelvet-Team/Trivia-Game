@@ -1,9 +1,9 @@
 package com.redvelvet.trivia_game.di
 
-import com.redvelvet.data.local.preferences.source.PreferencesDataSource
-import com.redvelvet.data.local.preferences.source.PreferencesDataSourceImpl
-import com.redvelvet.data.local.preferences.store.PreferencesDataStore
-import com.redvelvet.data.local.preferences.store.PreferencesDataStoreDataStoreImpl
+import com.redvelvet.trivia_game.data.local.preferences.source.PreferencesDataSource
+import com.redvelvet.trivia_game.data.local.preferences.source.PreferencesDataSourceImpl
+import com.redvelvet.trivia_game.data.local.preferences.store.PreferencesDataStore
+import com.redvelvet.trivia_game.data.local.preferences.store.PreferencesDataStoreDataStoreImpl
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn

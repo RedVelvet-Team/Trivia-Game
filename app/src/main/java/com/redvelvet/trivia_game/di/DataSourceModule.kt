@@ -1,7 +1,7 @@
 package com.redvelvet.trivia_game.di
 
-import com.redvelvet.data.source.RemoteDataSource
-import com.redvelvet.data.source.RemoteDataSourceImpl
+import com.redvelvet.trivia_game.data.source.RemoteDataSource
+import com.redvelvet.trivia_game.data.source.RemoteDataSourceImpl
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn

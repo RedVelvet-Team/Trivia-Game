@@ -1,6 +1,6 @@
 package com.redvelvet.trivia_game.di
 
-import com.redvelvet.data.remote.ApiService
+import com.redvelvet.trivia_game.data.remote.ApiService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
