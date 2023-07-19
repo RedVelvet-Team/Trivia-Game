@@ -98,5 +98,5 @@ fun QuestionContent() {
 @Preview(showSystemUi = true, showBackground = true)
 @Composable
 fun PreviewQuestionScreen() {
-    //QuestionScreen()
+    QuestionContent()
 }
