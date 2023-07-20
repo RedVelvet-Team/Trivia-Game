@@ -50,8 +50,8 @@ class CategoryFactory {
     )
 
     val newChips = listOf(
-        CategoryUIState.ChipItemUIState(1, "Easy"),
-        CategoryUIState.ChipItemUIState(2, "Medium"),
-        CategoryUIState.ChipItemUIState(3, "Difficult")
+        CategoryUIState.ChipItemUIState(1, "easy"),
+        CategoryUIState.ChipItemUIState(2, "medium"),
+        CategoryUIState.ChipItemUIState(3, "hard")
     )
 }

@@ -24,7 +24,7 @@ class CategoryScreenViewModel @Inject constructor(
         getChips()
         val args = requireNotNull(savedStateHandle[Keys.Arg_Mode]) as String
         _mode.update { args }
-        Log.w("HASSAN",mode.value)
+        Log.w("HASSAN", mode.value)
     }
 
     private fun getCategories() {
@@ -67,26 +67,36 @@ class CategoryScreenViewModel @Inject constructor(
 
     private fun disableNotSelectedCategories() {
         _state.update { state ->
-            state.copy(
-                categories = state.categories.map {
-                    if (it.selected) it.copy(enabled = true)
-                    else it.copy(enabled = false)
-                }
-            )
+            state.copy(categories = state.categories.map {
+                if (it.selected) it.copy(enabled = true)
+                else it.copy(enabled = false)
+            })
         }
     }
 
+    //    fun onChipItemClicked(chip: CategoryUIState.ChipItemUIState) {
+//        _state.update { state ->
+//            val updatedChips = state.chips.map {
+//                if (it.id == chip.id) {
+//                    it.copy(selected = !it.selected)
+//                } else {
+//                    it
+//                }
+//            }
+//            val selectedChips = updatedChips.filter { it.selected }
+//            state.copy(chips = updatedChips, selectedChips = selectedChips)
+//        }
+//    }
     fun onChipItemClicked(chip: CategoryUIState.ChipItemUIState) {
         _state.update { state ->
             val updatedChips = state.chips.map {
-                if (it.id == chip.id) {
-                    it.copy(selected = !it.selected)
-                } else {
-                    it
-                }
+                it.copy(selected = false)
+            }.toMutableList()
+            val selectedChip = updatedChips.find { it.id == chip.id }
+            selectedChip?.let {
+                updatedChips[updatedChips.indexOf(it)] = it.copy(selected = true)
             }
-            val selectedChips = updatedChips.filter { it.selected }
-            state.copy(chips = updatedChips, selectedChips = selectedChips)
+            state.copy(chips = updatedChips, selectedChips = listOfNotNull(selectedChip))
         }
     }
 }

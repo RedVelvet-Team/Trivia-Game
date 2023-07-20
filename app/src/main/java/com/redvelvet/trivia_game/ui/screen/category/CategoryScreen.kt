@@ -72,8 +72,17 @@ fun CategoryScreenContent(
             CustomButton(
                 label = stringResource(R.string.start),
                 onClick = {
-                    val selectedChips = state.selectedChips.joinToString(",")
-                    val selectedCategories = state.selectedCategories.joinToString(",")
+                    val selectedChips = buildString {
+                        state.selectedChips.forEach {
+                            append(it.name)
+                        }
+                    }
+                    val selectedCategories = buildString {
+                        state.selectedCategories.forEach{
+                            append("${it.name},")
+                        }
+                    }
+
                     onStartClick(selectedChips, selectedCategories)
                 },
                 modifier = Modifier.align(Alignment.BottomCenter),

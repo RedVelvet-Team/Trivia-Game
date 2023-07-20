@@ -53,7 +53,7 @@ fun Navigation(){
                 },
                 navArgument(Arg_Chips){
                     type = NavType.StringType
-                    defaultValue = "Easy"
+                    defaultValue = "easy"
                 },
                 navArgument(Arg_Categories){
                     type = NavType.StringType
