@@ -5,4 +5,5 @@ sealed class TriviaException(message: String) : Exception(message) {
     class ConnectionTimeOut: TriviaException("Connection TimeOut")
     class NoContentFound: TriviaException("No Content Found")
     class UnAuthorizedRequest: TriviaException("Un Authorized Request")
+    class UnknownError: TriviaException("Unknown Error")
 }

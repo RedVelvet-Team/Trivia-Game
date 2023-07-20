@@ -17,10 +17,10 @@ class ITriviaRepositoryImpl @Inject constructor(
         types: String?
     ): List<Question> {
         return remoteDataSource.getRandomSetOfQuestion(
-            categories = categories,
-            limit = limit,
-            difficulties = difficulties,
-           types = types
+            categories = categories!!,
+            limit = limit!!,
+            difficulties = difficulties!!,
+           types = types!!
         ).map { it.toDomain()}
     }
 }

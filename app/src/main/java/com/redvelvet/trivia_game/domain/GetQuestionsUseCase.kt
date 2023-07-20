@@ -11,7 +11,8 @@ class GetQuestionsUseCase @Inject constructor (
         return iTriviaRepository.getRandomSetOfQuestion(
             limit = 10,
             categories = categories,
-            difficulties = difficulties
+            difficulties = difficulties,
+            types = "text_choice"
         )
     }
 }
