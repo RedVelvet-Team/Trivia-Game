@@ -3,6 +3,7 @@ package com.redvelvet.trivia_game.ui.screen.category
 import android.util.Log
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
+import com.redvelvet.trivia_game.ui.navigation.Keys
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -21,7 +22,7 @@ class CategoryScreenViewModel @Inject constructor(
     init {
         getCategories()
         getChips()
-        val args = requireNotNull(savedStateHandle["mode"]) as String
+        val args = requireNotNull(savedStateHandle[Keys.Arg_Mode]) as String
         _mode.update { args }
         Log.w("HASSAN",mode.value)
     }
