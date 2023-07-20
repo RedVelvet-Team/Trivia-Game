@@ -73,9 +73,3 @@ fun GameModeCard(gameMode: GameMode,selected: Boolean, onClick: () -> Unit) {
         }
     }
 }
-
-data class GameMode(
-    val title: String,
-    val description: String,
-    @DrawableRes val icon: Int
-)

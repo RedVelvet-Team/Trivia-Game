@@ -1,5 +1,7 @@
 package com.redvelvet.trivia_game.ui.screen.category
 
+import android.util.Log
+import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -8,13 +10,20 @@ import kotlinx.coroutines.flow.update
 import javax.inject.Inject
 
 @HiltViewModel
-class CategoryScreenViewModel @Inject constructor() : ViewModel() {
+class CategoryScreenViewModel @Inject constructor(
+    private val savedStateHandle: SavedStateHandle
+) : ViewModel() {
     private val _state = MutableStateFlow(CategoryUIState())
     val state = _state.asStateFlow()
+    private val _mode = MutableStateFlow("")
+    val mode = _mode.asStateFlow()
 
     init {
         getCategories()
         getChips()
+        val args = requireNotNull(savedStateHandle["mode"]) as String
+        _mode.update { args }
+        Log.w("HASSAN",mode.value)
     }
 
     private fun getCategories() {

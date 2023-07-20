@@ -22,6 +22,5 @@ class ITriviaRepositoryImpl @Inject constructor(
             difficulties = difficulties,
            types = types
         ).map { it.toDomain()}
-
     }
 }
