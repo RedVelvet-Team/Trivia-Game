@@ -33,7 +33,6 @@ import com.redvelvet.trivia_game.ui.theme.Poppins
 @Composable
 fun QuestionScreen(navController: NavController) {
     QuestionContent()
-
 }
 
 @Composable
