@@ -11,12 +11,16 @@ import com.redvelvet.trivia_game.ui.navigation.Keys.Arg_Chips
 import com.redvelvet.trivia_game.ui.navigation.Keys.Arg_Mode
 import com.redvelvet.trivia_game.ui.screen.category.CategoryScreen
 import com.redvelvet.trivia_game.ui.screen.configuration.ConfigurationScreen
+import com.redvelvet.trivia_game.ui.screen.lose.LoseScreen
 import com.redvelvet.trivia_game.ui.screen.question.QuestionScreen
+import com.redvelvet.trivia_game.ui.screen.win.WinScreen
 
 object Keys{
     const val Arg_Mode = "mode"
     const val Arg_Chips = "chips"
     const val Arg_Categories = "categories"
+    const val Arg_Correct = "corrects"
+    const val Arg_Totals = "totals"
 }
 
 @Composable
@@ -61,5 +65,18 @@ fun Navigation(){
                 },
             )
         ){ QuestionScreen(navController = navController) }
+
+        composable(
+            Screen.ScreenWin.route,
+            arguments = emptyList()
+        ){ WinScreen(navController = navController) }
+
+        composable(
+            Screen.ScreenLose.route,
+            arguments = emptyList()
+        ){ LoseScreen(navController = navController) }
+
+
+
     }
 }

@@ -4,6 +4,8 @@ sealed class Screen(val route: String){
     object ScreenConfiguration: Screen("screen_config")
     object ScreenCategory: Screen("screen_category")
     object ScreenQuestion: Screen("screen_question")
+    object ScreenWin: Screen("screen_win")
+    object ScreenLose: Screen("screen_lose")
 
 
 

@@ -21,18 +21,19 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.redvelvet.trivia_game.R
-import com.redvelvet.trivia_game.ui.theme.*
 import com.redvelvet.trivia_game.ui.composable.ImageWin
 import com.redvelvet.trivia_game.ui.composable.VerticalSpacer
 import com.redvelvet.trivia_game.ui.composable.WinText14Sp
 import com.redvelvet.trivia_game.ui.composable.WinText20Sp
 import com.redvelvet.trivia_game.ui.theme.BackgroundLight
+import com.redvelvet.trivia_game.ui.theme.DarkGray
 import com.redvelvet.trivia_game.ui.theme.Poppins
 
 
 @Composable
-fun WinScreen() {
+fun WinScreen(navController: NavController) {
     val state = rememberScrollState()
     Column(
         modifier = Modifier
@@ -105,5 +106,5 @@ fun WinScreen() {
 @Preview(widthDp = 360, heightDp = 800)
 @Composable
 fun PreviewWin() {
-    WinScreen()
+    //WinScreen()
 }

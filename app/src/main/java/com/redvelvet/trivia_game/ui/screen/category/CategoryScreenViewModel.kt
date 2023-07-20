@@ -74,19 +74,6 @@ class CategoryScreenViewModel @Inject constructor(
         }
     }
 
-    //    fun onChipItemClicked(chip: CategoryUIState.ChipItemUIState) {
-//        _state.update { state ->
-//            val updatedChips = state.chips.map {
-//                if (it.id == chip.id) {
-//                    it.copy(selected = !it.selected)
-//                } else {
-//                    it
-//                }
-//            }
-//            val selectedChips = updatedChips.filter { it.selected }
-//            state.copy(chips = updatedChips, selectedChips = selectedChips)
-//        }
-//    }
     fun onChipItemClicked(chip: CategoryUIState.ChipItemUIState) {
         _state.update { state ->
             val updatedChips = state.chips.map {

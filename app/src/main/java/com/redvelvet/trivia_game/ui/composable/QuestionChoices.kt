@@ -1,6 +1,8 @@
 package com.redvelvet.trivia_game.ui.composable
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -15,9 +17,15 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import com.redvelvet.trivia_game.ui.screen.question.QuestionType
 
 @Composable
-fun QuestionChoices(text: String, spacer: Int) {
+fun QuestionChoices(
+    text: String,
+    spacer: Int,
+    type: QuestionType,
+    onAnswerClick: () -> Unit
+) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
@@ -26,7 +34,9 @@ fun QuestionChoices(text: String, spacer: Int) {
                 width = 1.dp,
                 color = Color(0x99212121),
                 shape = RoundedCornerShape(size = 12.dp)
-            ),
+            )
+            .background(color = if (type == QuestionType.CORRECT) Color.Green else if (type == QuestionType.WRONG) Color.Red else Color.Transparent)
+            .clickable { onAnswerClick() },
         horizontalArrangement = Arrangement.spacedBy(10.dp, Alignment.CenterHorizontally),
         verticalAlignment = Alignment.CenterVertically,
     ) {
