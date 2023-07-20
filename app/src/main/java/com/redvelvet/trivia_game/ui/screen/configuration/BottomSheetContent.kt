@@ -8,7 +8,6 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Divider
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -26,31 +25,13 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.redvelvet.trivia_game.R
 import com.redvelvet.trivia_game.ui.composable.VerticalSpacer
 import com.redvelvet.trivia_game.ui.theme.Poppins
 
 @Composable
-fun BottomSheetContent() {
+fun BottomSheetContent(list: List<GameMode>, onSelectMode: (String) -> Unit) {
     val screenHeight = LocalConfiguration.current.screenHeightDp.dp
     var selectedGameMode by remember { mutableStateOf<GameMode?>(null) }
-    val gameModes = listOf(
-        GameMode(
-            title = "Casual Mode",
-            description = "Take your time, explore diverse topics, collect more points, and enjoy a stress-free trivia experience!",
-            icon = R.drawable.causal_mode
-        ),
-        GameMode(
-            title = "Timed Mode",
-            description = "Test your speed, gather knowledge, and collect points before the timer runs out. if time expires, you lose!",
-            icon = R.drawable.timed_mode
-        ),
-        GameMode(
-            title = "Survival Mode",
-            description = "Answer correctly to stay in game, any wrong answer means you’re out. See how long you can survive!",
-            icon = R.drawable.survival_mode
-        )
-    )
     Surface(
         color = Color.White,
         modifier = Modifier.heightIn(max = screenHeight * 0.75f)
@@ -67,7 +48,8 @@ fun BottomSheetContent() {
         Divider(
             modifier = Modifier.width(50.dp),
             color = Color.Gray,
-            thickness = 4.dp)
+            thickness = 4.dp
+        )
         VerticalSpacer(space = 32)
         Text(
             text = "Select your preferred playing mode and start your trivia adventure now!",
@@ -80,11 +62,14 @@ fun BottomSheetContent() {
 
         Spacer(modifier = Modifier.height(16.dp))
 
-        gameModes.forEach { gameMode ->
+        list.forEach { gameMode ->
             GameModeCard(
                 gameMode = gameMode,
                 selected = gameMode == selectedGameMode,
-                onClick = { selectedGameMode = gameMode }
+                onClick = {
+                    selectedGameMode = gameMode
+                    onSelectMode(gameMode.title)
+                }
             )
         }
     }
@@ -94,5 +79,5 @@ fun BottomSheetContent() {
 @Preview(showSystemUi = true, showBackground = true)
 @Composable
 fun PreviewBottomSheetContent() {
-    BottomSheetContent()
+    BottomSheetContent(emptyList()){}
 }

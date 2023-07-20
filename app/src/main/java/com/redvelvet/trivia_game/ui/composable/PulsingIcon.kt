@@ -7,6 +7,7 @@ import androidx.compose.animation.core.infiniteRepeatable
 import androidx.compose.animation.core.rememberInfiniteTransition
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.size
@@ -23,7 +24,7 @@ import androidx.compose.ui.unit.dp
 import com.redvelvet.trivia_game.R
 
 @Composable
-fun PulsingIcon() {
+fun PulsingIcon(screenCategory: () -> Unit) {
     val pulseAnim = rememberInfiniteTransition()
     val pulse by pulseAnim.animateFloat(
         initialValue = 1f,
@@ -48,7 +49,7 @@ fun PulsingIcon() {
                 painter = painterResource(id = R.drawable.ic_play),
                 contentDescription = "Play",
                 tint = Color.White,
-                modifier = Modifier.size(100.dp)
+                modifier = Modifier.size(100.dp).clickable { screenCategory() }
             )
         }
     }
