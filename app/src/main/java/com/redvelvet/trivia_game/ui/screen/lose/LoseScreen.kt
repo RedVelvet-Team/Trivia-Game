@@ -9,6 +9,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavHostController
 import com.redvelvet.trivia_game.ui.composable.BackgroundColor
 import com.redvelvet.trivia_game.ui.composable.LoseImage
 import com.redvelvet.trivia_game.ui.composable.PlayAgainButton
@@ -18,7 +19,7 @@ import com.redvelvet.trivia_game.ui.composable.TextResult
 
 
 @Composable
-fun LoseScreen() {
+fun LoseScreen(navController: NavHostController) {
     BackgroundColor()
     Box(modifier = Modifier.fillMaxHeight()) {
         Column(
@@ -41,5 +42,5 @@ fun LoseScreen() {
 @Preview(showSystemUi = true)
 @Composable
 fun PreviewLoseScreen() {
-    LoseScreen()
+    //LoseScreen(navController)
 }

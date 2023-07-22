@@ -32,7 +32,3 @@ data class TextChoiceDTO(
     )
 }
 
-/*
-class TextChoiceDTO : ArrayList<TextChoiceDTO.TextChoiceDTOItem>(){
-
-}*/

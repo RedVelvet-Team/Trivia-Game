@@ -23,9 +23,9 @@ import com.redvelvet.trivia_game.ui.composable.CategoryLevelChips
 import com.redvelvet.trivia_game.ui.composable.CategorySelectionInfo
 import com.redvelvet.trivia_game.ui.composable.CustomButton
 import com.redvelvet.trivia_game.ui.composable.TriviaAppBar
+import com.redvelvet.trivia_game.ui.navigation.Screen
 import com.redvelvet.trivia_game.ui.screen.category.utils.SpaceVertical
 import com.redvelvet.trivia_game.ui.screen.category.utils.TriviaUtils
-import com.redvelvet.trivia_game.ui.screen.question.SCREEN_KEY_QUESTION_SCREEN
 import com.redvelvet.trivia_game.ui.theme.BackgroundLight
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -46,7 +46,7 @@ fun CategoryScreen(
             viewModel::onCategoryItemClicked,
             viewModel::onChipItemClicked,
         ) { chips, categories ->
-            navController.navigate("${SCREEN_KEY_QUESTION_SCREEN}/$chips/$categories")
+            navController.navigate(Screen.ScreenQuestion.withArgs(viewModel.mode.value,chips,categories))
         }
     }
 }
@@ -72,8 +72,17 @@ fun CategoryScreenContent(
             CustomButton(
                 label = stringResource(R.string.start),
                 onClick = {
-                    val selectedChips = state.selectedChips.joinToString(",")
-                    val selectedCategories = state.selectedCategories.joinToString(",")
+                    val selectedChips = buildString {
+                        state.selectedChips.forEach {
+                            append(it.name)
+                        }
+                    }
+                    val selectedCategories = buildString {
+                        state.selectedCategories.forEach{
+                            append("${it.name},")
+                        }
+                    }
+
                     onStartClick(selectedChips, selectedCategories)
                 },
                 modifier = Modifier.align(Alignment.BottomCenter),

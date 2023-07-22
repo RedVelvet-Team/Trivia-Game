@@ -1,31 +1,24 @@
 package com.redvelvet.trivia_game.ui.screen.configuration
 
-import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.BottomSheetScaffold
 import androidx.compose.material.BottomSheetState
 import androidx.compose.material.BottomSheetValue
 import androidx.compose.material.ExperimentalMaterialApi
-import androidx.compose.material.Surface
 import androidx.compose.material.rememberBottomSheetScaffoldState
-import androidx.compose.material3.Button
-import androidx.compose.material3.ButtonDefaults
-import androidx.compose.material3.Icon
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -33,21 +26,36 @@ import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
+import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.NavController
 import com.redvelvet.trivia_game.R
 import com.redvelvet.trivia_game.ui.composable.AnimatedArrowIcon
 import com.redvelvet.trivia_game.ui.composable.CustomDetailsScoreButton
 import com.redvelvet.trivia_game.ui.composable.PulsingIcon
-import com.redvelvet.trivia_game.ui.theme.OnBackgroundLight
-import com.redvelvet.trivia_game.ui.theme.Poppins
+import com.redvelvet.trivia_game.ui.navigation.Screen
 import com.redvelvet.trivia_game.ui.theme.Primary
+
+@Composable
+fun ConfigurationScreen(
+    viewModel: ConfigurationScreenViewModel = hiltViewModel(),
+    navController: NavController
+) {
+    val list = viewModel.data.collectAsState().value
+    ConfigurationScreenContent(list, {
+            navController.navigate(Screen.ScreenCategory.withArgs(viewModel.selectedMode.value))
+        },
+        viewModel::selectMode)
+}
 
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
-fun ConfigurationScreen() {
+fun ConfigurationScreenContent(
+    list: List<GameMode>,
+    screenCategory: () -> Unit,
+    onSelectMode: (String) -> Unit,
+    ) {
     val bottomSheetScaffoldState = rememberBottomSheetScaffoldState(
         bottomSheetState = BottomSheetState(BottomSheetValue.Collapsed)
     )
@@ -60,7 +68,7 @@ fun ConfigurationScreen() {
 
     BottomSheetScaffold(
         scaffoldState = bottomSheetScaffoldState,
-        sheetContent = { BottomSheetContent() },
+        sheetContent = { BottomSheetContent(list,onSelectMode) },
         sheetBackgroundColor = Color.White,
         sheetShape = RoundedCornerShape(
             topStart = 32.dp,
@@ -122,7 +130,7 @@ fun ConfigurationScreen() {
                         modifier = Modifier.size(200.dp),
                         contentAlignment = Alignment.Center
                     ) {
-                        PulsingIcon()
+                        PulsingIcon(screenCategory)
                     }
 
                     CustomDetailsScoreButton()
@@ -139,5 +147,5 @@ fun ConfigurationScreen() {
 @Preview(showSystemUi = true, showBackground = true)
 @Composable
 fun PreviewConfigurationScreen() {
-    ConfigurationScreen()
+    //ConfigurationScreenContent()
 }
