@@ -31,7 +31,8 @@ import com.redvelvet.trivia_game.ui.theme.BackgroundLight
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun CategoryScreen(
-    navController: NavController, viewModel: CategoryScreenViewModel = hiltViewModel()
+    navController: NavController,
+    viewModel: CategoryScreenViewModel = hiltViewModel()
 ) {
 
     val state by viewModel.state.collectAsState()

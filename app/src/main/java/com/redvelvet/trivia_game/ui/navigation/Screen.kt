@@ -8,7 +8,6 @@ sealed class Screen(val route: String){
     object ScreenLose: Screen("screen_lose")
 
 
-
     fun withArgs(vararg arg: String): String{
         return buildString {
             append(route)

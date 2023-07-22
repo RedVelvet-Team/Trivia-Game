@@ -132,10 +132,8 @@ fun ConfigurationScreenContent(
                     ) {
                         PulsingIcon(screenCategory)
                     }
-
                     CustomDetailsScoreButton()
                     AnimatedArrowIcon()
-
                 }
             }
         }
@@ -147,5 +145,5 @@ fun ConfigurationScreenContent(
 @Preview(showSystemUi = true, showBackground = true)
 @Composable
 fun PreviewConfigurationScreen() {
-    //ConfigurationScreenContent()
+
 }

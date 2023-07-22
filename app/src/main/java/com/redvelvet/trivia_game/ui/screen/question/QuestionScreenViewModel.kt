@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.redvelvet.trivia_game.domain.GetQuestionsUseCase
 import com.redvelvet.trivia_game.domain.entity.Question
+import com.redvelvet.trivia_game.domain.utils.TriviaException
 import com.redvelvet.trivia_game.ui.navigation.Keys
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
@@ -105,12 +106,18 @@ class QuestionScreenViewModel @Inject constructor(
         val difficulties = requireNotNull(savedStateHandle[Keys.Arg_Chips]) as String
 
         viewModelScope.launch {
-            _data.update {
-                QuestionScreenUiState(
-                    isLoading = false, questionList = getQuestionsUseCase.invoke(
-                        categories = categories, difficulties = difficulties
+            try{
+                _data.update {
+                    QuestionScreenUiState(
+                        isLoading = false, questionList = getQuestionsUseCase.invoke(
+                            categories = categories, difficulties = difficulties
+                        )
                     )
-                )
+                }
+            }catch (e: TriviaException){
+                _data.update {
+                    it.copy(isError = Pair(true,e.message.toString()))
+                }
             }
             updateQuestion()
             Log.w("MRR", data.value.questionList.toString())
@@ -119,7 +126,7 @@ class QuestionScreenViewModel @Inject constructor(
 }
 
 data class QuestionScreenUiState(
-    val isLoading: Boolean = true, val questionList: List<Question> = emptyList()
+    val isLoading: Boolean = true, val questionList: List<Question> = emptyList(),val isError:Pair<Boolean,String> = Pair(false,"")
 )
 
 
