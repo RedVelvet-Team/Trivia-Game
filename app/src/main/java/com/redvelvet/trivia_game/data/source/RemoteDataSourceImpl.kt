@@ -32,11 +32,7 @@ class RemoteDataSourceImpl @Inject constructor(
                 }
             }
         } catch (e: TriviaException) {
-            throw when (e) {
-                is TriviaException.ConnectionTimeOut -> TriviaException.ConnectionTimeOut()
-                is TriviaException.NoInternetConnection -> TriviaException.NoInternetConnection()
-                else -> throw TriviaException.UnknownError()
-            }
+            throw e
         }
     }
 }
