@@ -1,5 +1,6 @@
 package com.redvelvet.trivia_game.ui.screen.lose
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxHeight
@@ -16,12 +17,19 @@ import com.redvelvet.trivia_game.ui.composable.PlayAgainButton
 import com.redvelvet.trivia_game.ui.composable.Rate
 import com.redvelvet.trivia_game.ui.composable.TextConsolation
 import com.redvelvet.trivia_game.ui.composable.TextResult
-
+import com.redvelvet.trivia_game.ui.navigation.Screen
 
 @Composable
 fun LoseScreen(navController: NavController) {
-    BackgroundColor()
-    Box(modifier = Modifier.fillMaxHeight()) {
+    LoseScreenContent {
+        navController.navigate(Screen.ScreenCategory.route)
+    }
+}
+
+@Composable
+fun LoseScreenContent(onPlayAgain:() -> Unit) {
+    Box(modifier = Modifier.fillMaxHeight().clickable { onPlayAgain() }) {
+        BackgroundColor()
         Column(
             modifier = Modifier
                 .fillMaxSize()
@@ -31,7 +39,7 @@ fun LoseScreen(navController: NavController) {
             LoseImage()
             TextResult(totalCorrectAnswer = "3", totalQuestion = "11")
             TextConsolation()
-            PlayAgainButton()
+            PlayAgainButton(onPlayAgain = {})
         }
 
     }
@@ -39,8 +47,8 @@ fun LoseScreen(navController: NavController) {
 
 }
 
-@Preview(showSystemUi = true)
+@Preview(showSystemUi = true, showBackground = true)
 @Composable
 fun PreviewLoseScreen() {
-    //LoseScreen(navController)
+    LoseScreenContent({})
 }
