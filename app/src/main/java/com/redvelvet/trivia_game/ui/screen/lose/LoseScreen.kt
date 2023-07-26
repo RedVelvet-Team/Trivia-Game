@@ -1,5 +1,6 @@
 package com.redvelvet.trivia_game.ui.screen.lose
 
+import android.util.Log
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -28,7 +29,11 @@ fun LoseScreen(navController: NavController) {
 
 @Composable
 fun LoseScreenContent(onPlayAgain:() -> Unit) {
-    Box(modifier = Modifier.fillMaxHeight().clickable { onPlayAgain() }) {
+    Box(modifier = Modifier.fillMaxHeight().clickable {
+        onPlayAgain()
+        Log.i("X15","Box on click")
+
+    }) {
         BackgroundColor()
         Column(
             modifier = Modifier
@@ -39,9 +44,8 @@ fun LoseScreenContent(onPlayAgain:() -> Unit) {
             LoseImage()
             TextResult(totalCorrectAnswer = "3", totalQuestion = "11")
             TextConsolation()
-            PlayAgainButton(onPlayAgain = {})
+            PlayAgainButton(onPlayAgain = onPlayAgain)
         }
-
     }
 
 

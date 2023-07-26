@@ -1,5 +1,6 @@
 package com.redvelvet.trivia_game.ui.composable
 
+import android.util.Log
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -21,7 +22,10 @@ import com.redvelvet.trivia_game.ui.theme.White
 @Composable
 fun PlayAgainButton(onPlayAgain:() -> Unit) {
     Button(
-        onClick = { onPlayAgain() },
+        onClick = {
+            onPlayAgain()
+            Log.i("X15","button in click")
+                  },
         modifier = Modifier
             .fillMaxWidth()
             .height(64.dp),
